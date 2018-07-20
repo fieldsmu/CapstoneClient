@@ -2,16 +2,17 @@
 
 <table class="table table-sm">
     <tr>
-    	<th>Id</th>
-    	<th>Username</th>
-    	<th>Password</th>
-    	<th>First Name</th>
-		<th>Last Name</th>
-    	<th>Phone</th>
-    	<th>Email</th>
-    	<th>Reviewer</th>
-    	<th>Admin</th>
-		<th>Active</th>
+  	<th>Id</th>
+  	<th>Username</th>
+  	<th>Password</th>
+  	<th>First Name</th>
+    <th>Last Name</th>
+  	<th>Phone</th>
+  	<th>Email</th>
+  	<th>Reviewer</th>
+  	<th>Admin</th>
+    <th>Active</th>
+    <th>Actions</th>
     </tr>
     <tr *ngFor="let u of users">
       <td>{{u.Id}}</td>
@@ -24,6 +25,8 @@
       <td>{{u.Reviewer}}</td>
       <td>{{u.Admin}}</td>
       <td>{{u.Active}}</td>
+      <!-- need to add links for details and edit below once these are created -->
+      <td><a routerLink='/user-detail'>Detail</a> | Edit</td> -->
     </tr>
 </table>
 

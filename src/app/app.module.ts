@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
     HomeComponent,
     AboutComponent,
     MenuComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    UserDetailComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
