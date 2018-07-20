@@ -1,0 +1,15 @@
+li {
+	display : inline-block;
+	text-align : center;
+}
+
+a {
+	color : white;
+	padding : 0 10px;
+	text-decoration : none;
+}
+
+a:hover {
+	background-color: white;
+	color : black;
+}
