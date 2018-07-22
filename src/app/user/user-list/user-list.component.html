@@ -1,12 +1,11 @@
 <div>
-
+User List | Add New
 <table class="table table-sm">
     <tr>
   	<th>Id</th>
   	<th>Username</th>
   	<th>Password</th>
-  	<th>First Name</th>
-    <th>Last Name</th>
+  	<th>Name</th>
   	<th>Phone</th>
   	<th>Email</th>
   	<th>Reviewer</th>
@@ -18,15 +17,14 @@
       <td>{{u.Id}}</td>
       <td>{{u.Username}}</td>
       <td>{{u.Password}}</td>
-      <td>{{u.Firstname}}</td>
-      <td>{{u.Lastname}}</td>
+      <td>{{u.Firstname}} {{u.Lastname}}</td>
       <td>{{u.Phone}}</td>
       <td>{{u.Email}}</td>
-      <td>{{u.Reviewer}}</td>
-      <td>{{u.Admin}}</td>
-      <td>{{u.Active}}</td>
+      <td>{{u.IsReviewer | bool}}</td>
+      <td>{{u.IsAdmin | bool}}</td>
+      <td>{{u.Active | bool}}</td>
       <!-- need to add links for details and edit below once these are created -->
-      <td><a routerLink='/user-detail'>Detail</a> | Edit</td> -->
+      <td><a routerLink='/users/detail/{{ u.Id }}'>Detail</a> | <a routerLink='/users/edit/{{u.Id}}'>Edit</a></td>
     </tr>
 </table>
 

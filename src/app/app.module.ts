@@ -12,6 +12,8 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { BoolPipe } from './utility/bool.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     MenuComponent,
     MenuItemComponent,
     UserDetailComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserLoginComponent,
+    BoolPipe
   ],
   imports: [
     BrowserModule,

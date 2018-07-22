@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
 	menudata = [
 	{ href:"/home", display: "Home"},
 	{ href:"/about", display: "About"},
-	{ href:"/user-list", display: "User"},
+	{ href:"/users/list", display: "User"},
 	];
 	
   constructor() { }
