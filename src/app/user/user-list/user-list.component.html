@@ -23,7 +23,6 @@
       <td>{{u.IsReviewer | bool}}</td>
       <td>{{u.IsAdmin | bool}}</td>
       <td>{{u.Active | bool}}</td>
-      <!-- need to add links for details and edit below once these are created -->
       <td><a routerLink='/users/detail/{{ u.Id }}'>Detail</a> | <a routerLink='/users/edit/{{u.Id}}'>Edit</a></td>
     </tr>
 </table>

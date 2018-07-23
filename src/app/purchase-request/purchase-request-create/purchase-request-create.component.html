@@ -1,0 +1,28 @@
+{{title}}
+<div style="width:60%; padding: 10px;">
+	<label class="input-group-text" for="Description">Description</label>
+		<input [(ngModel)]="purchaserequest.Description" name="Description" type="text" class="form-control" id="Description">
+
+	<label class="input-group-text" for="Justification">Justification</label>
+		<input [(ngModel)]="purchaserequest.Justification" name="Justification" type="text" class="form-control" id="Justification">
+
+	<label class="input-group-text" for="RejectionReason">Rejection Reason</label>
+		<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason">
+
+	<label class="input-group-text" for="DeliveryMode">DeliveryMode</label>
+		<input [(ngModel)]="purchaserequest.DeliveryMode" name="DeliveryMode" type="text" class="form-control" id="DeliveryMode">
+
+	<label class="input-group-text" for="Status">Status</label>
+		<input [(ngModel)]="purchaserequest.Status" name="Status" type="text" class="form-control" id="Status">
+
+	<label class="input-group-text" for="Total">Total</label>
+		<input [(ngModel)]="purchaserequest.Total" name="Total" type="text" class="form-control" id="Total">
+
+	<label class="input-group-text" for="UserId">User</label>
+	<select [(ngModel)]=purchaserequest.UserId class="form-control" id="UserId" name="UserId">
+		<option *ngFor="let u of users" [ngValue]="u.Id">{{u.Username}}</option>
+	</select>
+
+	<button (click)="create();" class="btn btn-primary">Create</button>
+
+</div>

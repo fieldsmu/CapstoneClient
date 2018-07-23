@@ -1,0 +1,26 @@
+<div>
+{{ title }} | <a routerLink='/purchaserequests/create'>Add New</a>
+<table class="table table-sm">
+    <tr>
+  	<th>Id</th>
+  	<th>Description</th>
+  	<th>Justification</th>
+  	<th>Rejection Reason</th>
+  	<th>Delivery Mode</th>
+  	<th>Status</th>
+  	<th>Total</th>
+  	<th>User</th>
+    </tr>
+    <tr *ngFor="let pr of purchaserequests">
+      <td>{{pr.Id}}</td>
+      <td>{{pr.Description}}</td>
+      <td>{{pr.Justification}}</td>
+      <td>{{pr.RejectionReason}}</td>
+      <td>{{pr.DeliveryMode}}</td>
+      <td>{{pr.Status}}</td>
+      <td>{{pr.Total}}</td>
+      <td>{{pr.User.Username}}</td>
+      <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a></td>
+    </tr>
+</table>
+</div>

@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
 
-	title = 'app';
+	title = 'User Detail';
 
 	user: User;
 

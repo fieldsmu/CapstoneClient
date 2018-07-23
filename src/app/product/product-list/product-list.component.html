@@ -1,0 +1,28 @@
+<div>
+{{ title }} | <a routerLink='/products/create'>Add New Product</a>
+<table class="table table-sm">
+	<tr>
+		<th>Id</th>
+		<th>Part Number</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Unit</th>
+		<th>Photo Path</th>
+		<th>Active</th>
+		<th>Vendor</th>
+		<th>Actions</th>
+	</tr>
+	<tr *ngFor="let p of products">
+		<td>{{p.Id}}</td>
+		<td>{{p.PartNumber}}</td>
+		<td>{{p.Name}}</td>
+		<td>{{p.Price}}</td>
+		<td>{{p.Unit}}</td>
+		<td>{{p.PhotoPath}}</td>
+		<td>{{p.Active | bool}}</td>
+		<td>{{p.Vendor.Name}}</td>
+		<td><a routerLink='/products/detail/{{p.Id}}'>Detail</a> | <a routerLink='/products/edit/{{p.Id}}'>Edit</a>
+	</tr>
+</table>
+
+</div>

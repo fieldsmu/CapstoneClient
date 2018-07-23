@@ -11,7 +11,7 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 })
 export class UserEditComponent implements OnInit {
 
-title = 'app';
+title = 'User Edit';
 
 user: User;
 

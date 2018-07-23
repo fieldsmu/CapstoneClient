@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import {JsonResponse} from '../../utility/json-response';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BoolPipe } from '../../utility/bool.pipe';
 
 @Component({
   selector: 'app-user-create',
@@ -13,13 +14,14 @@ export class UserCreateComponent implements OnInit {
 
 pageTitle: String = 'User Create';
 
-user: User;
+user: User = new User()	;
 
 create(): void {
   	this.usersvc.create(this.user)
 		.subscribe(resp => {
 			this.user = resp.Data;
 			console.log(resp);
+			this.router.navigateByUrl('/users/list');
 		});
 }
 

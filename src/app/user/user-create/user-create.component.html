@@ -1,3 +1,40 @@
-<p>
-  user-create works!
-</p>
+<div style="width:60%; padding: 10px;">
+	<label class="input-group-text" for="Username">Username</label>
+		<input [(ngModel)]="user.Username" name="Username" type="text" class="form-control" id="Username">
+
+	<label class="input-group-text" for="Password">Password</label>
+		<input [(ngModel)]="user.Password" name="Password" type="Password" class="form-control" id="Password">
+
+	<label class="input-group-text" for="Firstname">First Name</label>
+		<input [(ngModel)]="user.Firstname" name="Firstname" type="text" class="form-control" id="Firstname">
+
+	<label class="input-group-text" for="Lastname">Last Name</label>
+		<input [(ngModel)]="user.Lastname" name="Lastname" type="text" class="form-control" id="Lastname">
+
+	<label class="input-group-text" for="Phone">Phone</label>
+		<input [(ngModel)]="user.Phone" name="Phone" type="text" class="form-control" id="Phone">
+
+	<label class="input-group-text" for="Email">Email</label>
+		<input [(ngModel)]="user.Email" name="Email" type="Email" class="form-control" id="Email">
+	
+	<label class="input-group-text" for="IsReviewer">Reviewer</label>
+		<select [(ngModel)]=user.IsReviewer class="form-control" id="IsReviewer" name="IsReviewer">
+			<option [ngValue]="true">Yes</option>
+			<option [ngValue]="false">No</option>
+		</select>
+	
+		<label class="input-group-text" for="IsAdmin">Admin</label>
+		<select [(ngModel)]=user.IsAdmin class="form-control" id="IsAdmin" name="IsAdmin">
+			<option [ngValue]="true">Yes</option>
+			<option [ngValue]="false">No</option>
+		</select>
+
+		<label class="input-group-text" for="Active">Active</label>
+		<select [(ngModel)]=user.Active class="form-control" id="Active" name="Active">
+			<option [ngValue]="true">Yes</option>
+			<option [ngValue]="false">No</option>
+		</select>
+
+	<button (click)="create()" class="btn btn-primary">Create</button>
+
+</div>

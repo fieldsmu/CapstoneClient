@@ -1,0 +1,40 @@
+<div style="width:60%; padding: 10px;">
+	<label class="input-group-text" for="Code">Code</label>
+		<input [(ngModel)]="vendor.Code" name="Code" type="text" class="form-control" id="Code">
+
+	<label class="input-group-text" for="Name">Name</label>
+		<input [(ngModel)]="vendor.Name" name="Name" type="Name" class="form-control" id="Name">
+
+	<label class="input-group-text" for="Address">Address</label>
+		<input [(ngModel)]="vendor.Address" name="Address" type="text" class="form-control" id="Address">
+
+	<label class="input-group-text" for="City">City</label>
+		<input [(ngModel)]="vendor.City" name="City" type="text" class="form-control" id="City">
+
+	<label class="input-group-text" for="State">State</label>
+		<input [(ngModel)]="vendor.State" name="State" type="text" class="form-control" id="State">
+
+	<label class="input-group-text" for="Zip">Zip</label>
+		<input [(ngModel)]="vendor.Zip" name="Zip" type="Zip" class="form-control" id="Zip">
+
+	<label class="input-group-text" for="Phone">Phone</label>
+		<input [(ngModel)]="vendor.Phone" name="Phone" type="Phone" class="form-control" id="Phone">
+
+	<label class="input-group-text" for="Email">Email</label>
+		<input [(ngModel)]="vendor.Email" name="Email" type="Email" class="form-control" id="Email">
+	
+	<label class="input-group-text" for="IsPreApproved">Preapproved</label>
+		<select [(ngModel)]=vendor.IsPreApproved class="form-control" id="IsPreApproved" name="IsPreApproved">
+			<option [ngValue]="true">Yes</option>
+			<option [ngValue]="false">No</option>
+		</select>
+	
+		<label class="input-group-text" for="Active">Active</label>
+		<select [(ngModel)]=vendor.Active class="form-control" id="Active" name="Active">
+			<option [ngValue]="true">Yes</option>
+			<option [ngValue]="false">No</option>
+		</select>
+
+	<button (click)="create()" class="btn btn-primary">Create</button>
+
+</div>
