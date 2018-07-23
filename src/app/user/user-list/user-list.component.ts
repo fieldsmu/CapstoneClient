@@ -13,7 +13,7 @@ import {JsonResponse} from '../../utility/json-response';
 
 export class UserListComponent implements OnInit {
 
-title = 'app';
+title = 'User List';
 
 users: User[];
 

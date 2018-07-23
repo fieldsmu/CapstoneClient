@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import {JsonResponse} from '../../utility/json-response';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,7 +15,15 @@ title = 'app';
 
 user: User;
 
-  constructor(private usersvc: UserService, private route: ActivatedRoute) { }
+change(): void {
+	this.usersvc.change(this.user)
+		.subscribe(resp => {
+        console.log(resp);
+        this.router.navigateByUrl('/users/list');
+      });
+}
+
+  constructor(private usersvc: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
@@ -28,6 +36,4 @@ user: User;
   			console.log(resp);
   		});
   }
-
-
 }

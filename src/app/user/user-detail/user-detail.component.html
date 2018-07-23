@@ -9,6 +9,12 @@
   	<tr><th>Reviewer</th><td>{{ user.IsReviewer  | bool}}</td></tr>
   	<tr><th>Admin</th><td>{{ user.IsAdmin  | bool}}</td></tr>
     <tr><th>Active</th><td>{{ user.Active  | bool}}</td></tr>
-    <tr><td colspan=2>Edit | Remove</tr>
+    <tr><td colspan=2>
+    	<a routerLink='/users/edit/{{user.Id}}' class="btn btn-primary">Edit</a> | 
+    <button (click)="remove();" class="btn btn-danger"> Remove</button>
+    <span *ngIf="deleteConfirmed">
+    	| <button (click)="confirmed();" class="btn btn-warning">Confirm Delete</button>
+    </span>
+	</tr>
 </table>
 </div>

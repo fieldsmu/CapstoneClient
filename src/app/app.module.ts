@@ -14,6 +14,7 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { BoolPipe } from './utility/bool.pipe';
+import { UserCreateComponent } from './user/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BoolPipe } from './utility/bool.pipe';
     UserDetailComponent,
     UserEditComponent,
     UserLoginComponent,
-    BoolPipe
+    BoolPipe,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
