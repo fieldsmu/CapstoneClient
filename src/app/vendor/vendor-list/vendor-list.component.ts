@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../vendor.service';
 import { Vendor } from '../vendor';
 import {JsonResponse} from '../../utility/json-response';
+import { SystemService } from '../../system/system.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-list',
@@ -14,9 +16,15 @@ title = 'Vendor List';
 
 vendors: Vendor[];
 
-  constructor(private vendorsvc: VendorService) { }
+  constructor(private vendorsvc: VendorService,private systemsrv: SystemService, private router: Router) { }
 
   ngOnInit() {
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
   	this.vendorsvc.list()
   		.subscribe(resp => {
   			this.vendors = resp.Data;
@@ -25,3 +33,6 @@ vendors: Vendor[];
   }
 
 }
+
+
+

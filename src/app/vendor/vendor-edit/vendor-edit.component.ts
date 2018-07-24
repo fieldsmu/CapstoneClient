@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { VendorService } from '../vendor.service';
 import { Vendor } from '../vendor';
 import { JsonResponse } from '../../utility/json-response';
+import { SystemService } from '../../system/system.service';
+
 
 @Component({
   selector: 'app-vendor-edit',
@@ -24,10 +26,16 @@ change(): void {
 		});
 }
 
-  constructor(private vendorsvc: VendorService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private vendorsvc: VendorService, private route: ActivatedRoute, private router: Router, private systemsrv: SystemService) { }
 
   ngOnInit() {
-  
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
+
 	let id = this.route.snapshot.params.id;
 	console.log("id=",id);
 
@@ -40,3 +48,6 @@ change(): void {
   }
 
 }
+
+
+

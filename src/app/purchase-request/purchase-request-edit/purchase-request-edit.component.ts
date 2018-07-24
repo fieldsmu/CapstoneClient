@@ -10,6 +10,9 @@ import { UserService } from '../../user/user.service';
 import { Product } from '../../product/product';
 import { ProductService } from '../../product/product.service';
 
+import { SystemService } from '../../system/system.service';
+
+
 @Component({
   selector: 'app-purchase-request-edit',
   templateUrl: './purchase-request-edit.component.html',
@@ -34,9 +37,15 @@ change(): void {
 			this.router.navigateByUrl('/purchaserequests/list');
 		});
 }
-  constructor(private purchaserequestsvc: PurchaseRequestService, private router: Router, private usersvc: UserService, private productsvc: ProductService, private route: ActivatedRoute) { }
+  constructor(private purchaserequestsvc: PurchaseRequestService, private router: Router, private usersvc: UserService, private productsvc: ProductService, private route: ActivatedRoute, private systemsrv: SystemService) { }
 
   ngOnInit() {
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
     	let id = this.route.snapshot.params.id;
     	console.log("id: ", id);
     	this.purchaserequestsvc.get(id)

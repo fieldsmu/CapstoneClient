@@ -3,6 +3,8 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import {JsonResponse} from '../../utility/json-response';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemService } from '../../system/system.service';
+
 
 
 @Component({
@@ -30,10 +32,16 @@ export class UserDetailComponent implements OnInit {
 			});
 	}
 
-	constructor(private usersvc: UserService, private route: ActivatedRoute, private router: Router) { }
+	constructor(private usersvc: UserService, private route: ActivatedRoute, private router: Router, private systemsrv: SystemService) { }
 
 
 	ngOnInit() {
+		
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
 		let id = this.route.snapshot.params.id;
 		console.log("id=",id);
 

@@ -11,9 +11,10 @@ export class MenuComponent implements OnInit {
 	{ href:"/home", display: "Home"},
 	{ href:"/about", display: "About"},
 	{ href:"/users/list", display: "User"},
-	{ href:"/vendors/list", display: "Vendor"}
+	{ href:"/vendors/list", display: "Vendor"},
 	{ href:"/products/list", display: "Product"},
-	{ href: "purchaserequests/list", display: "Purchase Request"}
+	{ href: "/purchaserequests/list", display: "Purchase Request"},
+	{ href: "/users/login", display: "Login"}
 	];
 	
   constructor() { }

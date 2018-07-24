@@ -4,7 +4,7 @@ import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Vendor } from '../../vendor/vendor';
 import { VendorService } from '../../vendor/vendor.service';
-
+import { SystemService } from '../../system/system.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -27,9 +27,15 @@ change(): void {
 		});
 }
 
-  constructor(private productsvc: ProductService, private router: Router, private route: ActivatedRoute, private vendorsvc: VendorService) { }
+  constructor(private productsvc: ProductService, private route: ActivatedRoute, private vendorsvc: VendorService, private systemsrv: SystemService, private router: Router) { }
 
   ngOnInit() { 
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
   	let id = this.route.snapshot.params.id;
   	console.log("id=",id);
 

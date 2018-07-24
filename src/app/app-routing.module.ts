@@ -7,6 +7,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
@@ -22,6 +23,8 @@ import { PurchaseRequestListComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestDetailComponent } from './purchase-request/purchase-request-detail/purchase-request-detail.component';
 import { PurchaseRequestEditComponent } from './purchase-request/purchase-request-edit/purchase-request-edit.component';
 import { PurchaseRequestCreateComponent } from './purchase-request/purchase-request-create/purchase-request-create.component';
+import { PurchaseRequestLinesComponent } from './purchase-request/purchase-request-lines/purchase-request-lines.component';
+
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch:'full' },
@@ -32,6 +35,7 @@ const routes: Routes = [
 	{ path: 'users/detail/:id', component: UserDetailComponent},
 	{ path: 'users/edit/:id', component: UserEditComponent},
 	{ path: 'users/create', component: UserCreateComponent},
+	{ path: 'users/login', component: UserLoginComponent},
 
 	{ path: 'vendors/list', component: VendorListComponent},
 	{ path: 'vendors/detail/:id', component: VendorDetailComponent},
@@ -47,6 +51,7 @@ const routes: Routes = [
 	{ path: 'purchaserequests/detail/:id', component: PurchaseRequestDetailComponent},
 	{ path: 'purchaserequests/edit/:id', component: PurchaseRequestEditComponent},
 	{ path: 'purchaserequests/create', component: PurchaseRequestCreateComponent},
+	{ path: 'purchaserequests/lineitems/:id', component: PurchaseRequestLinesComponent},
 
 	{ path: '**', component: HomeComponent }
 ];

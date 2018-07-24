@@ -10,6 +10,8 @@ import { UserService } from '../../user/user.service';
 import { Product } from '../../product/product';
 import { ProductService } from '../../product/product.service';
 
+import { SystemService } from '../../system/system.service';
+
 @Component({
   selector: 'app-purchase-request-create',
   templateUrl: './purchase-request-create.component.html',
@@ -33,9 +35,15 @@ create(): void {
 			this.router.navigateByUrl('/purchaserequests/list');
 		});
 }
-  constructor(private purchaserequestsvc: PurchaseRequestService, private router: Router, private usersvc: UserService, private productsvc: ProductService, private route: ActivatedRoute) { }
+  constructor(private purchaserequestsvc: PurchaseRequestService, private router: Router, private usersvc: UserService, private productsvc: ProductService, private route: ActivatedRoute, private systemsrv: SystemService) { }
 
   ngOnInit() { 
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+    
     	this.productsvc.list()
   		.subscribe(resp => {
   			this.products = resp.Data;

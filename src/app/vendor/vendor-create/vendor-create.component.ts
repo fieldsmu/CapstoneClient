@@ -4,30 +4,40 @@ import { VendorService } from '../vendor.service';
 import {JsonResponse} from '../../utility/json-response';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BoolPipe } from '../../utility/bool.pipe';
+import { SystemService } from '../../system/system.service';
 
 @Component({
-  selector: 'app-vendor-create',
-  templateUrl: './vendor-create.component.html',
-  styleUrls: ['./vendor-create.component.css']
+	selector: 'app-vendor-create',
+	templateUrl: './vendor-create.component.html',
+	styleUrls: ['./vendor-create.component.css']
 })
 export class VendorCreateComponent implements OnInit {
 
-pageTitle: string = "Vendor Create";
+	title: string = "Vendor Create";
 
-vendor: Vendor = new Vendor();
+	vendor: Vendor = new Vendor();
 
 	create(): void {
 		this.vendorsvc.create(this.vendor)
-			.subscribe(resp => {
-				this.vendor=resp.Data;
-				console.log(resp);
-				this.router.navigateByUrl('/vendors/list');
-			}
+		.subscribe(resp => {
+			this.vendor=resp.Data;
+			console.log(resp);
+			this.router.navigateByUrl('/vendors/list');
+		}
 	}
 
-  constructor(private vendorsvc: VendorService, private router: Router, private Route: ActivatedRoute) { }
+	constructor(private vendorsvc: VendorService, private router: Router, private Route: ActivatedRoute, private systemsrv: SystemService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+
+		if(this.systemsrv.loggedInUser == null) {
+			this.router.navigateByUrl('/users/login');
+		}
+		console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+
+	}
 
 }
+
+
+

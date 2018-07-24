@@ -3,13 +3,13 @@ import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-purchase-request-detail',
-  templateUrl: './purchase-request-detail.component.html',
-  styleUrls: ['./purchase-request-detail.component.css']
+  selector: 'app-purchase-request-lines',
+  templateUrl: './purchase-request-lines.component.html',
+  styleUrls: ['./purchase-request-lines.component.css']
 })
-export class PurchaseRequestDetailComponent implements OnInit {
+export class PurchaseRequestLinesComponent implements OnInit {
 
-  title:string="Purchase Request Detail";
+title: string="Purchase Request Lineitems";
 
   constructor(private systemsrv: SystemService, private router: Router) { }
 
@@ -19,7 +19,7 @@ export class PurchaseRequestDetailComponent implements OnInit {
       this.router.navigateByUrl('/users/login');
     }
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
-
+    
   }
 
 }

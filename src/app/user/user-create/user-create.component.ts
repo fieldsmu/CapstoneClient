@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
-import {JsonResponse} from '../../utility/json-response';
+import { JsonResponse} from '../../utility/json-response';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BoolPipe } from '../../utility/bool.pipe';
+import { SystemService } from '../../system/system.service';
+
+
+
 
 @Component({
   selector: 'app-user-create',
@@ -12,7 +16,7 @@ import { BoolPipe } from '../../utility/bool.pipe';
 })
 export class UserCreateComponent implements OnInit {
 
-pageTitle: String = 'User Create';
+title: String = 'User Create';
 
 user: User = new User()	;
 
@@ -25,8 +29,13 @@ create(): void {
 		});
 }
 
-  constructor(private usersvc: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private usersvc: UserService, private router: Router, private route: ActivatedRoute, private systemsrv: SystemService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+  }
 
 }

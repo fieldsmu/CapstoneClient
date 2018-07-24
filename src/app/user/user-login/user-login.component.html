@@ -1,3 +1,11 @@
-<p>
-  user-login works!
-</p>
+<div style="width:60%; padding: 30px; margin: auto;">
+	<label class="input-group-text" for="Username">Username</label>
+		<input [(ngModel)]="user.Username" name="Username" type="text" class="form-control" id="Username">
+
+	<label class="input-group-text" for="Password">Password</label>
+		<input [(ngModel)]="user.Password" name="Password" type="Password" class="form-control" id="Password">
+
+	<button (click)="login()" class="btn btn-primary">Submit</button>
+	<div *ngIf="showFailed" style="color:red;">Login failed</div>
+
+</div>

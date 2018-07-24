@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div>
 <h3>{{ title }}</h3>
 <a routerLink='/purchaserequests/create'>Add New</a>
@@ -11,6 +12,7 @@
   	<th>Status</th>
   	<th>Total</th>
   	<th>User</th>
+    <th>Actions</th>
     </tr>
     <tr *ngFor="let pr of purchaserequests">
       <td>{{pr.Id}}</td>
@@ -21,7 +23,8 @@
       <td>{{pr.Status}}</td>
       <td>{{pr.Total}}</td>
       <td>{{pr.User.Username}}</td>
-      <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a></td>
+      <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> | 
+          <a routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a></td>
     </tr>
 </table>
 </div>

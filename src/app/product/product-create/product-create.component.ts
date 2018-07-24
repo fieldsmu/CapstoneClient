@@ -4,7 +4,7 @@ import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Vendor } from '../../vendor/vendor';
 import { VendorService } from '../../vendor/vendor.service';
-
+import { SystemService } from '../../system/system.service';
 
 @Component({
   selector: 'app-product-create',
@@ -13,7 +13,7 @@ import { VendorService } from '../../vendor/vendor.service';
 })
 export class ProductCreateComponent implements OnInit {
 
-title = "Product Create";
+title = "Create Product";
 
 product: Product = new Product();
 
@@ -28,9 +28,14 @@ create(): void {
 		});
 }
 
-  constructor(private productsvc: ProductService, private router: Router, private route: ActivatedRoute, private vendorsvc: VendorService) { }
+  constructor(private productsvc: ProductService, private router: Router, private route: ActivatedRoute, private vendorsvc: VendorService, private systemsrv: SystemService) { }
 
   ngOnInit() { 
+
+    if(this.systemsrv.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
 
   	this.vendorsvc.list()
   		.subscribe(resp => {
