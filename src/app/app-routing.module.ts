@@ -25,39 +25,49 @@ import { PurchaseRequestEditComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestCreateComponent } from './purchase-request/purchase-request-create/purchase-request-create.component';
 import { PurchaseRequestLinesComponent } from './purchase-request/purchase-request-lines/purchase-request-lines.component';
 
+import { PurchaseRequestLineitemListComponent } from './purchase-request-lineitem/purchase-request-lineitem-list/purchase-request-lineitem-list.component';
+import { PurchaseRequestLineitemDetailComponent } from './purchase-request-lineitem/purchase-request-lineitem-detail/purchase-request-lineitem-detail.component';
+import { PurchaseRequestLineitemEditComponent } from './purchase-request-lineitem/purchase-request-lineitem-edit/purchase-request-lineitem-edit.component';
+import { PurchaseRequestLineitemCreateComponent } from './purchase-request-lineitem/purchase-request-lineitem-create/purchase-request-lineitem-create.component';
+
 
 const routes: Routes = [
-	{ path: '', redirectTo: '/home', pathMatch:'full' },
-	{ path: 'home', component: HomeComponent },
-	{ path: 'about', component: AboutComponent },
+{ path: '', redirectTo: '/home', pathMatch:'full' },
+{ path: 'home', component: HomeComponent },
+{ path: 'about', component: AboutComponent },
 
-	{ path: 'users/list', component: UserListComponent},
-	{ path: 'users/detail/:id', component: UserDetailComponent},
-	{ path: 'users/edit/:id', component: UserEditComponent},
-	{ path: 'users/create', component: UserCreateComponent},
-	{ path: 'users/login', component: UserLoginComponent},
+{ path: 'users/list', component: UserListComponent},
+{ path: 'users/detail/:id', component: UserDetailComponent},
+{ path: 'users/edit/:id', component: UserEditComponent},
+{ path: 'users/create', component: UserCreateComponent},
+{ path: 'users/login', component: UserLoginComponent},
 
-	{ path: 'vendors/list', component: VendorListComponent},
-	{ path: 'vendors/detail/:id', component: VendorDetailComponent},
-	{ path: 'vendors/edit/:id', component: VendorEditComponent},
-	{ path: 'vendors/create', component: VendorCreateComponent},
+{ path: 'vendors/list', component: VendorListComponent},
+{ path: 'vendors/detail/:id', component: VendorDetailComponent},
+{ path: 'vendors/edit/:id', component: VendorEditComponent},
+{ path: 'vendors/create', component: VendorCreateComponent},
 
-	{ path: 'products/list', component: ProductListComponent},
-	{ path: 'products/detail/:id', component: ProductDetailComponent},
-	{ path: 'products/edit/:id', component: ProductEditComponent},
-	{ path: 'products/create', component: ProductCreateComponent},
+{ path: 'products/list', component: ProductListComponent},
+{ path: 'products/detail/:id', component: ProductDetailComponent},
+{ path: 'products/edit/:id', component: ProductEditComponent},
+{ path: 'products/create', component: ProductCreateComponent},
 
-	{ path: 'purchaserequests/list', component: PurchaseRequestListComponent},
-	{ path: 'purchaserequests/detail/:id', component: PurchaseRequestDetailComponent},
-	{ path: 'purchaserequests/edit/:id', component: PurchaseRequestEditComponent},
-	{ path: 'purchaserequests/create', component: PurchaseRequestCreateComponent},
-	{ path: 'purchaserequests/lineitems/:id', component: PurchaseRequestLinesComponent},
+{ path: 'purchaserequests/list', component: PurchaseRequestListComponent},
+{ path: 'purchaserequests/detail/:id', component: PurchaseRequestDetailComponent},
+{ path: 'purchaserequests/edit/:id', component: PurchaseRequestEditComponent},
+{ path: 'purchaserequests/create', component: PurchaseRequestCreateComponent},
+{ path: 'purchaserequests/lineitems/:id', component: PurchaseRequestLinesComponent},
 
-	{ path: '**', component: HomeComponent }
+{ path: 'purchaserequestlineitems/list', component: PurchaseRequestLineitemListComponent},
+{ path: 'purchaserequestlineitems/detail/:id', component: PurchaseRequestLineitemDetailComponent},
+{ path: 'purchaserequestlineitems/edit/:id', component: PurchaseRequestLineitemEditComponent},
+{ path: 'purchaserequestlineitems/create', component: PurchaseRequestLineitemCreateComponent},
+
+{ path: '**', component: HomeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }

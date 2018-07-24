@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div>
-<h3>{{ title }}</h3>
+<h3 *ngIf="this.systemsrv.loggedInUser.Username">{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
 <a routerLink='/purchaserequests/create'>Add New</a>
 <table class="table table-sm">
     <tr>
@@ -14,7 +14,7 @@
   	<th>User</th>
     <th>Actions</th>
     </tr>
-    <tr *ngFor="let pr of purchaserequests">
+    <tr *ngFor="let pr of filteredPurchaseRequests">
       <td>{{pr.Id}}</td>
       <td>{{pr.Description}}</td>
       <td>{{pr.Justification}}</td>

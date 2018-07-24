@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<div style="width:60%; padding: 10px;">
+<div style="width:60%; padding: 10px;" *ngIf=purchaserequest>
 	<label class="input-group-text" for="Description">Description</label>
 		<input [(ngModel)]="purchaserequest.Description" name="Description" type="text" class="form-control" id="Description">
 
@@ -19,10 +19,10 @@
 	<label class="input-group-text" for="Total">Total</label>
 		<input [(ngModel)]="purchaserequest.Total" name="Total" type="text" class="form-control" id="Total">
 
-	<label class="input-group-text" for="UserId">User</label>
+<!-- 	<label class="input-group-text" for="UserId">User</label>
 	<select [(ngModel)]=purchaserequest.UserId class="form-control" id="UserId" name="UserId">
 		<option *ngFor="let u of users" [ngValue]="u.Id">{{u.Username}}</option>
-	</select>
+	</select> -->
 
 	<button (click)="change();" class="btn btn-primary">Save Changes</button>
 

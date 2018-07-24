@@ -12,13 +12,14 @@ import { Router } from '@angular/router'
 })
 export class PurchaseRequestListComponent implements OnInit {
 
-title: string = "Purchase Request List";
+  title: string = "Purchase Request List";
 
-purchaserequests: PurchaseRequest[];
+  purchaserequests: PurchaseRequest[];
+  filteredPurchaseRequests: PurchaseRequest[] = [];
 
   constructor(private purchaserequestsvc: PurchaseRequestService, private systemsrv: SystemService, private router: Router) { }
 
-	ngOnInit() {
+  ngOnInit() {
 
     if(this.systemsrv.loggedInUser == null) {
       this.router.navigateByUrl('/users/login');
@@ -26,9 +27,14 @@ purchaserequests: PurchaseRequest[];
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
 
     this.purchaserequestsvc.list()
-  		.subscribe(resp => {
-  			this.purchaserequests = resp.Data;
-  			console.log(resp);
-  		});
-  	}
+    .subscribe(resp => {
+      this.purchaserequests = resp.Data;
+      for (let pr of this.purchaserequests) {
+      if (pr.UserId == this.systemsrv.loggedInUser.Id) {
+        this.filteredPurchaseRequests.push(pr);
+      }
+    }
+      console.log(resp);
+    });
+  }
 }

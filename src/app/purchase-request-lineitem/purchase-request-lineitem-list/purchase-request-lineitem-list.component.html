@@ -1,5 +1,25 @@
 <app-menu></app-menu>
-<h3>{{title}}</h3>
-<p>
-  purchase-request-lineitem-list works!
-</p>
+<div>
+<h3>{{ title }}</h3>
+<a routerLink='/purchaserequestlineitems/create'>Add New</a>
+<table class="table table-sm">
+    <tr>
+  	<th>Id</th>
+  	<th>Description</th>
+  	<th>Quantity</th>
+  	<th>ProductId</th>
+  	<th>Product</th>
+  	<th>Purchase Request Id</th>
+    </tr>
+    <tr *ngFor="let prli of purchaserequestlineitems">
+      <td>{{prli.Id}}</td>
+      <td>{{prli.Description}}</td>
+      <td>{{prli.Quantity}}</td>
+      <td>{{prli.ProductId}}</td>
+      <td>{{prli.Product.Name}}</td>
+      <td>{{prli.PurchaseRequestId}}</td>
+      <td><a routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
+    </tr>
+</table>
+
+</div>

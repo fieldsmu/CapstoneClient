@@ -19,7 +19,8 @@ export class UserLoginComponent implements OnInit {
 
 	login(): void {
 		this.systemsvc.clearLoggedInUser();
-		this.usersvc.authenticate(this.user.Username, this.user.Password)
+
+		this.usersvc.authenticate("user","1")	//(this.user.Username, this.user.Password)
 		.subscribe(resp => {
 			console.log(resp);
 			if(resp.Code == -2) {

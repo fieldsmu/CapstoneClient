@@ -5,7 +5,7 @@ import { PurchaseRequest } from './purchase-request';
 import {JsonResponse} from '../utility/json-response';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 
 export class PurchaseRequestService {
@@ -23,6 +23,10 @@ export class PurchaseRequestService {
 
 	get(id: number) : Observable<JsonResponse> {
 		return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
+	}
+
+	getByUserId(UserId: number) : Observable<JsonResponse> {
+		return this.http.get(this.url+"GetByUserId/"+id) as Observable<JsonResponse>;
 	}
 
 	create(purchaserequest: PurchaseRequest): Observable<JsonResponse> {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router'
+import {PurchaseRequestLineitemService } from '../../purchase-request-lineitem/purchase-request-lineitem.service';
+import {PurchaseRequestLineitem } from '../../purchase-request-lineitem/purchase-request-lineitem';
 
 @Component({
   selector: 'app-purchase-request-lines',
@@ -9,9 +11,12 @@ import { Router } from '@angular/router'
 })
 export class PurchaseRequestLinesComponent implements OnInit {
 
-title: string="Purchase Request Lineitems";
+  purchaserequestlineitems: PurchaseRequestLineitem[];
+  filterPurchaseRequestLineitems: PurchaseRequestLineitem[] = [];
 
-  constructor(private systemsrv: SystemService, private router: Router) { }
+  title: string = "Purchase Request Lineitem List";
+
+  constructor(private systemsrv: SystemService, private router: Router, private prlineitemsrv: PurchaseRequestLineitemService) { }
 
   ngOnInit() {
 
@@ -20,6 +25,16 @@ title: string="Purchase Request Lineitems";
     }
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
     
+    this.prlineitemsrv.list()
+    .subscribe(resp => {
+      this.purchaserequestlineitems = resp.Data;
+      console.log(resp);
+      for (let pr of this.purchaserequestlineitems) {
+      if (pr.PurchaseRequestId == this.purchaserequest.Id) {
+        this.filteredPurchaseRequests.push(pr);
+    });
+
   }
 
 }
+

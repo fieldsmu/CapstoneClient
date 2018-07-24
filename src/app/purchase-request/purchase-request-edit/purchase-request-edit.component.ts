@@ -41,10 +41,13 @@ change(): void {
 
   ngOnInit() {
 
+    //checking for logged in user
     if(this.systemsrv.loggedInUser == null) {
       this.router.navigateByUrl('/users/login');
     }
+    else {
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+    }
 
     	let id = this.route.snapshot.params.id;
     	console.log("id: ", id);

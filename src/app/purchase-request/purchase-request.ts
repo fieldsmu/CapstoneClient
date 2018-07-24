@@ -9,7 +9,7 @@ export class PurchaseRequest {
 	RejectionReason: string;
 	DeliveryMode: string;
 	Status: string;
-	Total: number;
+	Total: number = 0;
 	UserId: number;
 	User: User;
 	PurchaseRequestLineItems: PurchaseRequestLineItems[];

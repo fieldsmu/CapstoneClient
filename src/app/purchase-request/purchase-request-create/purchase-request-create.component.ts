@@ -19,22 +19,23 @@ import { SystemService } from '../../system/system.service';
 })
 export class PurchaseRequestCreateComponent implements OnInit {
 
-title: String = "Purchase Request Create";
+  title: String = "Purchase Request Create";
 
-purchaserequest: PurchaseRequest = new PurchaseRequest();
+  purchaserequest: PurchaseRequest = new PurchaseRequest();
 
-products: Product[];
+  products: Product[];
 
-users:User[];
+  users:User[];
 
-create(): void {
-	this.purchaserequestsvc.create(this.purchaserequest)
-		.subscribe(resp => {
-			this.purchaserequest = resp.Data;
-			console.log(resp);
-			this.router.navigateByUrl('/purchaserequests/list');
-		});
-}
+  create(): void {
+    this.purchaserequestsvc.create(this.purchaserequest)
+    .subscribe(resp => {
+      this.purchaserequest = resp.Data;
+      console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/list');
+    });
+  }
+
   constructor(private purchaserequestsvc: PurchaseRequestService, private router: Router, private usersvc: UserService, private productsvc: ProductService, private route: ActivatedRoute, private systemsrv: SystemService) { }
 
   ngOnInit() { 
@@ -42,19 +43,21 @@ create(): void {
     if(this.systemsrv.loggedInUser == null) {
       this.router.navigateByUrl('/users/login');
     }
-    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+    else {
+      console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+      this.purchaserequest.UserId = this.systemsrv.loggedInUser.Id;
+    }
     
-    	this.productsvc.list()
-  		.subscribe(resp => {
-  			this.products = resp.Data;
-  			console.log(resp);
-  		});
+    this.productsvc.list()
+    .subscribe(resp => {
+      this.products = resp.Data;
+      console.log(resp);
+    });
 
-     this.usersvc.list()
-      .subscribe(resp => {
-        this.users = resp.Data;
-        console.log(resp);
-      });
-  	}
-
+    this.usersvc.list()
+    .subscribe(resp => {
+      this.users = resp.Data;
+      console.log(resp);
+    });
+  }
 }

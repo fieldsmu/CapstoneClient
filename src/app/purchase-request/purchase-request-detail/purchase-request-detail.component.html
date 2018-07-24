@@ -1,5 +1,22 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<p>
-  purchase-request-detail works!
-</p>
+<div>
+<table *ngIf="purchaserequest" class="table table-sm">
+	<tr><th>Id</th><td>{{ purchaserequest.Id }}</td></tr>
+	<tr><th>Description</th><td>{{ purchaserequest.Description }}</td></tr>
+	<tr><th>Justification</th><td>{{ purchaserequest.Justification }}</td></tr>
+	<tr><th>Rejection Reason</th><td>{{ purchaserequest.RejectionReason }}</td></tr>
+	<tr><th>Delivery Mode</th><td>{{ purchaserequest.DeliveryMode }}</td></tr>
+	<tr><th>Status</th><td>{{ purchaserequest.Status }}</td></tr>
+	<tr><th>Total</th><td>{{ purchaserequest.Total }}</td></tr>
+	<tr><th>User</th><td>{{ purchaserequest.User.Username }}</td></tr>
+
+    <tr><td colspan=2>
+    	<a routerLink='/purchaserequests/edit/{{purchaserequest.Id}}' class="btn btn-primary">Edit</a> | 
+    <button (click)="remove();" class="btn btn-danger"> Remove</button>
+    <span *ngIf="deleteConfirmed">
+    	| <button (click)="confirmed();" class="btn btn-warning">Confirm Delete</button>
+    </span>
+	</tr>
+</table>
+</div>
