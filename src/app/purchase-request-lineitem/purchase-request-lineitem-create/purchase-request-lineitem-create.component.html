@@ -1,5 +1,18 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<p>
-  purchase-request-lineitem-create works!
-</p>
+
+	<label class="input-group-text" for="Product">Product</label>
+		<select [(ngModel)]="purchaserequestlineitem.ProductId" class="form-control" id="ProductId" name="ProductId">
+			<option *ngFor="let p of products" [ngValue]="p.Id">{{p.Name}}</option>
+		</select>
+
+	<label class="input-group-text" for="Quantity">Quantity</label>
+		<input [(ngModel)]="purchaserequestlineitem.Quantity" name="Quantity" type="number" class="form-control" id="Quantity" placeholder="Enter Quantity Here">
+
+		<button (click)="add();" class="btn btn-primary">Add Item</button>
+
+
+
+
+
+

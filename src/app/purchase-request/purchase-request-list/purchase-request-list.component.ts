@@ -4,6 +4,7 @@ import { PurchaseRequest } from '../purchase-request';
 import {JsonResponse} from '../../utility/json-response';
 import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router'
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-request-list',

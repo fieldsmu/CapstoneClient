@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../system/system.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../product/product.service';
+import { Product } from '../../product/product';
+import { PurchaseRequestLineitem } from '../purchase-request-lineitem';
+import { PurchaseRequestLineitemService } from '../purchase-request-lineitem.service'
 
 @Component({
   selector: 'app-purchase-request-lineitem-create',
@@ -9,9 +13,21 @@ import { Router } from '@angular/router';
 })
 export class PurchaseRequestLineitemCreateComponent implements OnInit {
 
+products: Product[];
+purchaserequestlineitem: PurchaseRequestLineitem = new PurchaseRequestLineitem();
+
+add(): void {
+    this.purchaserequestlineitemsvc.create(this.purchaserequestlineitem) 
+    .subscribe(resp => {
+      this.purchaserequestlineitem = resp.Data;
+      console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/lineitems/'+this.route.snapshot.params.id);
+    });
+}
+
 title: string = "Purchase Request Lineitem Create";
 
-  constructor(private systemsrv: SystemService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private systemsrv: SystemService, private router: Router, private productsvc: ProductService, private purchaserequestlineitemsvc: PurchaseRequestLineitemService) { }
 
   ngOnInit() {
 
@@ -20,6 +36,16 @@ title: string = "Purchase Request Lineitem Create";
     }
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
 
-  }
+    let id = this.route.snapshot.params.id;
+    console.log("id: ", id);
+    this.purchaserequestlineitem.PurchaseRequestId = id;
+
+      this.productsvc.list()
+      .subscribe(resp => {
+        this.products = resp.Data;
+        console.log(resp);
+      });
+
+   }
 
 }

@@ -38,7 +38,7 @@ export class UserService {
 	}
 
 	authenticate(username: string, password: string): Observable<JsonResponse> {
-		return this.http.get(this.url+"Authenticate/"+username+"/"+password) as Observable<JsonReponse>;
+		return this.http.get(this.url+"Authenticate/"+username+"/"+password) as Observable<JsonResponse>;
 	}
 	constructor(private http: HttpClient) { }
 }

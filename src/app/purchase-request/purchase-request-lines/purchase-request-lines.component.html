@@ -1,23 +1,30 @@
 <app-menu></app-menu>
-<div>
-<h3>{{ title }}</h3>
-<a routerLink='/purchaserequestlineitems/create'>Add New</a>
+<div *ngIf="purchaserequest">
+<h3>{{ title }} {{purchaserequest.Id}}</h3>
+<a routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New</a>
+<table class="table table-sm">
+<tr>
+  <th style="text-align:right">User: </th><td>{{systemsrv.loggedInUser.Username}}</td>
+  <th style="text-align:right">Description: </th><td>{{purchaserequest.Description}}</td>
+  <th style="text-align:right">Status: </th><td>{{purchaserequest.Status}}</td>
+  <th style="text-align:right">Total: </th><td>{{purchaserequest.Total | currency}}</td>
+<br />
+</tr>
+</table>
+
 <table class="table table-sm">
     <tr>
-  	<th>Id</th>
-  	<th>Description</th>
-  	<th>Quantity</th>
-  	<th>ProductId</th>
   	<th>Product</th>
-  	<th>Purchase Request Id</th>
+    <th>Quantity</th>
+  	<th>Price</th>
+    <th>Line Total</th>
+    <th>Action</th>
     </tr>
-    <tr *ngFor="let prli of purchaserequestlineitems">
-      <td>{{prli.Id}}</td>
-      <td>{{prli.Description}}</td>
-      <td>{{prli.Quantity}}</td>
-      <td>{{prli.ProductId}}</td>
+    <tr *ngFor="let prli of purchaserequest.PurchaseRequestLineitems">
       <td>{{prli.Product.Name}}</td>
-      <td>{{prli.PurchaseRequestId}}</td>
+      <td>{{prli.Quantity}}</td>
+      <td>{{prli.Product.Price | currency}}</td>
+      <td>{{prli.Quantity*prli.Product.Price | currency}}</td>
       <td><a routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>

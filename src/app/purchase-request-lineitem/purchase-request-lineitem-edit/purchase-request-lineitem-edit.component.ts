@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../system/system.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { PurchaseRequestLineitem } from '../purchase-request-lineitem';
+import { PurchaseRequestLineitemService } from '../purchase-request-lineitem.service';
+
 
 
 @Component({
@@ -11,16 +15,36 @@ import { Router } from '@angular/router';
 export class PurchaseRequestLineitemEditComponent implements OnInit {
 
 	title: string = "Purchase Request Lineitem Edit"
+	purchaserequestlineitem: PurchaseRequestLineitem;
 
-	constructor(private systemsrv: SystemService, private router: Router) { }
+	constructor(
+		private route: ActivatedRoute,
+		private purchaserequestlineitemsvc: PurchaseRequestLineitemService,
+		private systemsvc: SystemService,
+		private router: Router
+		) { }
 
-	ngOnInit() {
-
-		if(this.systemsrv.loggedInUser == null) {
-			this.router.navigateByUrl('/users/login');
-		}
-		console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
-
-	}
-
+change() {
+	this.purchaserequestlineitemsvc.change(this.purchaserequestlineitem)
+		.subscribe(resp => {
+			console.log(resp);
+			this.router.navigateByUrl('/purchaserequests/lineitems/'+this.purchaserequestlineitem.PurchaseRequestId);
+		});
 }
+
+  ngOnInit() {
+
+    if(this.systemsvc.loggedInUser == null) {
+      this.router.navigateByUrl('/users/login');
+    }
+    console.log("Logged-in user is: ",this.systemsvc.loggedInUser);
+
+    let id = this.route.snapshot.params.id;
+    console.log("id=",id);
+
+    this.purchaserequestlineitemsvc.get(id)
+    .subscribe(resp => {
+      this.purchaserequestlineitem = resp.Data;
+      console.log(resp);
+    });
+  }

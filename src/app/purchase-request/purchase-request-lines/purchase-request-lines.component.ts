@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../system/system.service';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import {PurchaseRequestLineitemService } from '../../purchase-request-lineitem/purchase-request-lineitem.service';
 import {PurchaseRequestLineitem } from '../../purchase-request-lineitem/purchase-request-lineitem';
+import { PurchaseRequest } from '../../purchase-request/purchase-request';
+import { PurchaseRequestService } from '../../purchase-request/purchase-request.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-request-lines',
@@ -11,12 +14,11 @@ import {PurchaseRequestLineitem } from '../../purchase-request-lineitem/purchase
 })
 export class PurchaseRequestLinesComponent implements OnInit {
 
-  purchaserequestlineitems: PurchaseRequestLineitem[];
-  filterPurchaseRequestLineitems: PurchaseRequestLineitem[] = [];
+  purchaserequest: PurchaseRequest;
 
-  title: string = "Purchase Request Lineitem List";
+  title: string = "Purchase Request Lineitems for PR# ";
 
-  constructor(private systemsrv: SystemService, private router: Router, private prlineitemsrv: PurchaseRequestLineitemService) { }
+  constructor(private systemsrv: SystemService, private router: Router, private prlineitemsrv: PurchaseRequestLineitemService, private route: ActivatedRoute, private purchaserequestsvc: PurchaseRequestService) { }
 
   ngOnInit() {
 
@@ -24,17 +26,16 @@ export class PurchaseRequestLinesComponent implements OnInit {
       this.router.navigateByUrl('/users/login');
     }
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
-    
-    this.prlineitemsrv.list()
+  
+    //grab the user id from the address bar  
+    let id = this.route.snapshot.params.id;
+    console.log("id=",id);
+
+    //getting details for purchase request
+    this.purchaserequestsvc.get(id)
     .subscribe(resp => {
-      this.purchaserequestlineitems = resp.Data;
+      this.purchaserequest = resp.Data;
       console.log(resp);
-      for (let pr of this.purchaserequestlineitems) {
-      if (pr.PurchaseRequestId == this.purchaserequest.Id) {
-        this.filteredPurchaseRequests.push(pr);
     });
-
+    }
   }
-
-}
-

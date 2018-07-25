@@ -23,7 +23,7 @@ export class VendorCreateComponent implements OnInit {
 			this.vendor=resp.Data;
 			console.log(resp);
 			this.router.navigateByUrl('/vendors/list');
-		}
+		});
 	}
 
 	constructor(private vendorsvc: VendorService, private router: Router, private Route: ActivatedRoute, private systemsrv: SystemService) { }

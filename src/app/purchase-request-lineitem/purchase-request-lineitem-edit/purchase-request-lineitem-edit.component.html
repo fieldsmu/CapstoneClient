@@ -1,5 +1,11 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<p>
-  purchase-request-lineitem-edit works!
-</p>
+<div *ngIf="purchaserequestlineitem">
+	<label class="input-group-text" for="Product">Product</label>
+		<input value={{purchaserequestlineitem.Product.Name}} style="border:0px;" readonly>
+
+	<label class="input-group-text" for="Quantity">Quantity</label>
+		<input [(ngModel)]="purchaserequestlineitem.Quantity" name="Quantity" type="number" class="form-control" id="Quantity">
+
+		<button (click)="change();" class="btn btn-primary">Save Changes</button>
+</div>

@@ -1,5 +1,15 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<p>
-  purchase-request-lineitem-detail works!
-</p>
+<div>
+<table *ngIf="purchaserequestlineitem" class="table table-sm">
+	<tr><th>Name</th><td>{{ purchaserequestlineitem.Product.Name }}</td></tr>
+  	<tr><th>Quantity</th><td>{{ purchaserequestlineitem.Quantity }}</td></tr>
+    <tr><td colspan=2>
+    	<a routerLink='/purchaserequestlineitems/edit/{{purchaserequestlineitem.Id}}' class="btn btn-primary">Edit</a> | 
+    <button (click)="remove();" class="btn btn-danger"> Remove</button>
+    <span *ngIf="deleteConfirmed">
+    	| <button (click)="confirmed();" class="btn btn-warning">Confirm Delete</button>
+    </span>
+	</tr>
+</table>
+</div>

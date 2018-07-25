@@ -25,9 +25,9 @@ export class PurchaseRequestService {
 		return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
 	}
 
-	getByUserId(UserId: number) : Observable<JsonResponse> {
-		return this.http.get(this.url+"GetByUserId/"+id) as Observable<JsonResponse>;
-	}
+	// getByUserId(UserId: number) : Observable<JsonResponse> {
+	// 	return this.http.get(this.url+"GetByUserId/"+id) as Observable<JsonResponse>;
+	// }
 
 	create(purchaserequest: PurchaseRequest): Observable<JsonResponse> {
 		return this.http.post(this.url+"Create",purchaserequest) as Observable<JsonResponse>;

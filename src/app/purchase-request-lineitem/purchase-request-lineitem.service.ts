@@ -20,16 +20,16 @@ export class PurchaseRequestLineitemService {
 		return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
 	}
 
-	create(prlineitem:PurchaseRequestLineitem): Observable<JsonResponse> {
-		return this.http.post(this.url+"Create",prlineitem) as Observable<JsonResponse>;
+	create(purchaserequestlineitem:PurchaseRequestLineitem): Observable<JsonResponse> {
+		return this.http.post(this.url+"Create",purchaserequestlineitem) as Observable<JsonResponse>;
 	}
 
-	change(prlineitem: PurchaseRequestLineitem): Observable<JsonResponse> {
-		return this.http.post(this.url+"Change",prlineitem) as Observable<JsonResponse>;
+	change(purchaserequestlineitem: PurchaseRequestLineitem): Observable<JsonResponse> {
+		return this.http.post(this.url+"Change",purchaserequestlineitem) as Observable<JsonResponse>;
 	}
 
-	remove(prlineitem: PurchaseRequestLineitem): Observable<JsonResponse> {
-		return this.http.post(this.url+"Remove",prlineitem) as Observable<JsonResponse>;
+	remove(purchaserequestlineitem: PurchaseRequestLineitem): Observable<JsonResponse> {
+		return this.http.post(this.url+"Remove",purchaserequestlineitem) as Observable<JsonResponse>;
 	}
 
 	constructor(private http: HttpClient) { }

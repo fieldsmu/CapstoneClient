@@ -21,7 +21,7 @@
       <td>{{pr.RejectionReason}}</td>
       <td>{{pr.DeliveryMode}}</td>
       <td>{{pr.Status}}</td>
-      <td>{{pr.Total}}</td>
+      <td>{{pr.Total | currency}}</td>
       <td>{{pr.User.Username}}</td>
       <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> | 
           <a routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a></td>

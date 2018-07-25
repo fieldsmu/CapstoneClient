@@ -3,6 +3,7 @@ import { SystemService } from '../../system/system.service';
 import { PurchaseRequestService } from '../purchase-request.service';
 import { Router, ActivatedRoute } from '@angular/router'
 import { PurchaseRequest } from '../purchase-request';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-request-detail',

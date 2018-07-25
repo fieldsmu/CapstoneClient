@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SystemService } from '../../system/system.service';
-import { Router } from '@angular/router';
 
-import { PurchaseRequest } from '../../purchase-request/purchase-request';
-import { PurchaseRequestService } from '../../purchase-request/purchase-request.service';
-
-import { Product } from '../../product/product';
-import { ProductService } from '../../product/product.service';
+import { PurchaseRequestLineitem } from '../purchase-request-lineitem';
+import { PurchaseRequestLineitemService } from '../purchase-request-lineitem.service';
 
 @Component({
   selector: 'app-purchase-request-lineitem-detail',
@@ -16,40 +12,45 @@ import { ProductService } from '../../product/product.service';
 })
 export class PurchaseRequestLineitemDetailComponent implements OnInit {
 
-title: string = "Purchase Request Lineitem Detail";
+  title: string = "Purchase Request Lineitem Detail";
+  purchaserequestlineitem: PurchaseRequestLineitem;
 
-products: Product[];
-purchaserequest: PurchaseRequest;
+deleteConfirmed
+  remove() {
+    this.deleteConfirmed=true;
+  }
+
+  confirmed() {
+    let id = this.purchaserequestlineitem.PurchaseRequestId
+    this.purchaserequestlineitemsvc.remove(this.purchaserequestlineitem)
+    .subscribe (resp => {
+      console.log("prli removed: ", resp)
+      this.router.navigateByUrl('/purchaserequests/lineitems/'+id);
+    });
+  }
 
   constructor(
   	private router: Router,
   	private route: ActivatedRoute,
-  	private productsvc: ProductService,
-  	private purchaserequestsvc: PurchaseRequestService,
-  	private systemsrv: SystemService
-  	) { }
+  	private systemsvc: SystemService,
+    private purchaserequestlineitemsvc: PurchaseRequestLineitemService
+    ) { }
 
   ngOnInit() {
 
-    if(this.systemsrv.loggedInUser == null) {
+    if(this.systemsvc.loggedInUser == null) {
       this.router.navigateByUrl('/users/login');
     }
-    console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
+    console.log("Logged-in user is: ",this.systemsvc.loggedInUser);
 
-  		let id = this.route.snapshot.params.id;
-		console.log("id=",id);
+    let id = this.route.snapshot.params.id;
+    console.log("id=",id);
 
-		this.productsvc.get(id)
-		.subscribe(resp => {
-			this.products = resp.Data;
-			console.log(resp);
-		});
-
-		this.purchaserequestsvc.get(id)
-			.subscribe( resp => {
-				this.purchaserequest = resp.Data;
-				console.log(resp);
-			});
-	}
+    this.purchaserequestlineitemsvc.get(id)
+    .subscribe(resp => {
+      this.purchaserequestlineitem = resp.Data;
+      console.log(resp);
+    });
+  }
 
 }

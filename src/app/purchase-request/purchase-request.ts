@@ -1,5 +1,5 @@
-import { User } from '../user/user';
-import { PurchaseRequestLineItems } from '../purchase-request-lineitems/purchase-request-lineitems';
+	import { User } from '../user/user';
+	import { PurchaseRequestLineitem } from '../purchase-request-lineitem/purchase-request-lineitem';
 
 export class PurchaseRequest {
 
@@ -12,5 +12,5 @@ export class PurchaseRequest {
 	Total: number = 0;
 	UserId: number;
 	User: User;
-	PurchaseRequestLineItems: PurchaseRequestLineItems[];
+	PurchaseRequestLineItems: PurchaseRequestLineitem[];
 }

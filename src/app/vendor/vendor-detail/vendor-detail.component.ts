@@ -33,7 +33,6 @@ export class VendorDetailComponent implements OnInit {
 	}
 
 
-private systemsrv: SystemService
 	constructor(private vendorsvc: VendorService, private route: ActivatedRoute, private router: Router, private systemsrv: SystemService) { }
 
 	ngOnInit() {

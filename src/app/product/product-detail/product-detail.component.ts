@@ -4,6 +4,7 @@ import { Product } from '../product';
 import {JsonResponse} from '../../utility/json-response';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SystemService } from '../../system/system.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',

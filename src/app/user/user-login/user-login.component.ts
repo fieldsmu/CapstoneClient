@@ -12,7 +12,7 @@ import { User } from '../../user/user';
 
 export class UserLoginComponent implements OnInit {
 
-	title: string = "Login";
+	title: string = "Login:";
 	user: User = new User();
 	message: string = "";
 	showFailed: boolean = false;
