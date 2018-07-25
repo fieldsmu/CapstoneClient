@@ -24,27 +24,28 @@ export class PurchaseRequestLineitemEditComponent implements OnInit {
 		private router: Router
 		) { }
 
-change() {
-	this.purchaserequestlineitemsvc.change(this.purchaserequestlineitem)
+	change() {
+		this.purchaserequestlineitemsvc.change(this.purchaserequestlineitem)
 		.subscribe(resp => {
 			console.log(resp);
 			this.router.navigateByUrl('/purchaserequests/lineitems/'+this.purchaserequestlineitem.PurchaseRequestId);
 		});
+	}
+
+	ngOnInit() {
+
+		if(this.systemsvc.loggedInUser == null) {
+			this.router.navigateByUrl('/users/login');
+		}
+		console.log("Logged-in user is: ",this.systemsvc.loggedInUser);
+
+		let id = this.route.snapshot.params.id;
+		console.log("id=",id);
+
+		this.purchaserequestlineitemsvc.get(id)
+		.subscribe(resp => {
+			this.purchaserequestlineitem = resp.Data;
+			console.log(resp);
+		});
+	}
 }
-
-  ngOnInit() {
-
-    if(this.systemsvc.loggedInUser == null) {
-      this.router.navigateByUrl('/users/login');
-    }
-    console.log("Logged-in user is: ",this.systemsvc.loggedInUser);
-
-    let id = this.route.snapshot.params.id;
-    console.log("id=",id);
-
-    this.purchaserequestlineitemsvc.get(id)
-    .subscribe(resp => {
-      this.purchaserequestlineitem = resp.Data;
-      console.log(resp);
-    });
-  }

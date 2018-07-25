@@ -33,13 +33,13 @@ import { PurchaseRequestListComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestCreateComponent } from './purchase-request/purchase-request-create/purchase-request-create.component';
 import { PurchaseRequestEditComponent } from './purchase-request/purchase-request-edit/purchase-request-edit.component';
 import { PurchaseRequestDetailComponent } from './purchase-request/purchase-request-detail/purchase-request-detail.component';
+import { PurchaseRequestLinesComponent } from './purchase-request/purchase-request-lines/purchase-request-lines.component';
+import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 
 import { PurchaseRequestLineitemCreateComponent } from './purchase-request-lineitem/purchase-request-lineitem-create/purchase-request-lineitem-create.component';
 import { PurchaseRequestLineitemDetailComponent } from './purchase-request-lineitem/purchase-request-lineitem-detail/purchase-request-lineitem-detail.component';
 import { PurchaseRequestLineitemEditComponent } from './purchase-request-lineitem/purchase-request-lineitem-edit/purchase-request-lineitem-edit.component';
 import { PurchaseRequestLineitemListComponent } from './purchase-request-lineitem/purchase-request-lineitem-list/purchase-request-lineitem-list.component';
-import { PurchaseRequestLinesComponent } from './purchase-request/purchase-request-lines/purchase-request-lines.component';
-import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 import { PurchaseRequestLineitemReviewComponent } from './purchase-request-lineitem/purchase-request-lineitem-review/purchase-request-lineitem-review.component';
 
 @NgModule({

@@ -1,3 +1,44 @@
-<p>
-  purchase-request-lineitem-review works!
-</p>
+<app-menu></app-menu>
+<h3>{{title}}</h3>
+<div *ngIf="purchaserequest">
+<table class="table table-sm">
+	<tr>
+		<th>Id</th>
+		<th>Description</th>
+		<th>Justification</th>
+		<th>Status</th>
+		<th>Total</th>
+	</tr>
+	<tr>
+		<td>{{purchaserequest.Id}}</td>
+		<td>{{purchaserequest.Description}}</td>
+		<td>{{purchaserequest.Justification}}</td>
+		<td>{{purchaserequest.Status}}</td>
+		<td>{{purchaserequest.Total | currency}}</td>
+	</tr>
+</table>
+
+<table class="table table-sm">
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>Line Total</th>
+	</tr>
+	<tr *ngFor="let li of purchaserequest.PurchaseRequestLineitems">
+		<td>{{li.Product.Name}}</td>
+		<td>{{li.Quantity}}</td>
+		<td>{{li.Product.Price}}</td>
+		<td>{{li.Quantity*li.Product.Price | currency}}</td>
+	</tr>
+</table>
+</div>
+<div>
+	<button (click)="approve();" class="btn btn-success">Approve</button> | <button (click)="rejectstart();" class="btn btn-danger">Reject</button>
+</div>
+<br />
+<div *ngIf="reject && purchaserequest">
+	<label class="input-group-text" for="RejectionReason">Rejection Reason</label>
+	<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason" placeholder = "Enter reason for rejection here">
+	<button (click)="rejectcomplete();" class="btn btn-danger">Complete</button>
+</div>

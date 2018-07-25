@@ -24,11 +24,13 @@ import { PurchaseRequestDetailComponent } from './purchase-request/purchase-requ
 import { PurchaseRequestEditComponent } from './purchase-request/purchase-request-edit/purchase-request-edit.component';
 import { PurchaseRequestCreateComponent } from './purchase-request/purchase-request-create/purchase-request-create.component';
 import { PurchaseRequestLinesComponent } from './purchase-request/purchase-request-lines/purchase-request-lines.component';
+import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 
 import { PurchaseRequestLineitemListComponent } from './purchase-request-lineitem/purchase-request-lineitem-list/purchase-request-lineitem-list.component';
 import { PurchaseRequestLineitemDetailComponent } from './purchase-request-lineitem/purchase-request-lineitem-detail/purchase-request-lineitem-detail.component';
 import { PurchaseRequestLineitemEditComponent } from './purchase-request-lineitem/purchase-request-lineitem-edit/purchase-request-lineitem-edit.component';
 import { PurchaseRequestLineitemCreateComponent } from './purchase-request-lineitem/purchase-request-lineitem-create/purchase-request-lineitem-create.component';
+import { PurchaseRequestLineitemReviewComponent } from './purchase-request-lineitem/purchase-request-lineitem-review/purchase-request-lineitem-review.component';
 
 
 const routes: Routes = [
@@ -57,11 +59,13 @@ const routes: Routes = [
 { path: 'purchaserequests/edit/:id', component: PurchaseRequestEditComponent},
 { path: 'purchaserequests/create', component: PurchaseRequestCreateComponent},
 { path: 'purchaserequests/lineitems/:id', component: PurchaseRequestLinesComponent},
+{ path: 'purchaserequests/review', component: PurchaseRequestReviewComponent},
 
 { path: 'purchaserequestlineitems/list', component: PurchaseRequestLineitemListComponent},
 { path: 'purchaserequestlineitems/detail/:id', component: PurchaseRequestLineitemDetailComponent},
 { path: 'purchaserequestlineitems/edit/:id', component: PurchaseRequestLineitemEditComponent},
 { path: 'purchaserequestlineitems/create/:id', component: PurchaseRequestLineitemCreateComponent},
+{ path: 'purchaserequestlineitems/review/:id', component: PurchaseRequestLineitemReviewComponent},
 
 { path: '**', component: HomeComponent }
 ];

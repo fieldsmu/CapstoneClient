@@ -12,10 +12,6 @@ export class UserService {
 
 	url="http://localhost:49332/Users/";
 
-	// authenticate(): Observable<JsonResponse> {
-	// 	return this.http.get(url+"Authenticate/"+username+"/"=password) as Observable<JsonResponse>;
-	// }
-
 	list(): Observable<JsonResponse> {
 		//all of the service calls will look like the below with either get or post
 		return this.http.get(this.url+"List") as Observable<JsonResponse>;

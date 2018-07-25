@@ -1,3 +1,23 @@
-<p>
-  purchase-request-review works!
-</p>
+<app-menu></app-menu>
+<div *ngIf="filteredPurchaseRequests">
+<table class="table table-sm">
+	<tr>
+		<th>Description</th>
+		<th>Justification</th>
+		<th>Delivery Mode</th>
+		<th>Status</th>
+		<th>Total</th>
+		<th>User</th>
+		<th>Actions</th>
+	</tr>
+	<tr *ngFor="let fpr of filteredPurchaseRequests">
+		<td>{{fpr.Description}}</td>
+		<td>{{fpr.Justification}}</td>
+		<td>{{fpr.DeliveryMode}}</td>
+		<td>{{fpr.Status}}</td>
+		<td>{{fpr.Total | currency}}</td>
+		<td>{{fpr.User.Username}}</td>
+		<td><a routerLink="/purchaserequestlineitems/review/{{fpr.Id}}">Review</a></td>
+	</tr>
+</table>
+</div>

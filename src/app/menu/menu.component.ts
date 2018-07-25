@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
 	{ href:"/vendors/list", display: "Vendor"},
 	{ href:"/products/list", display: "Product"},
 	{ href: "/purchaserequests/list", display: "Purchase Request"},
+	{ href: "/purchaserequests/review", display: "Review" },
 	{ href: "/users/login", display: "Login/Logout"}
 	];
 	

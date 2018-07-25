@@ -7,14 +7,14 @@
 	<label class="input-group-text" for="Justification">Justification</label>
 		<input [(ngModel)]="purchaserequest.Justification" name="Justification" type="text" class="form-control" id="Justification">
 
-	<label class="input-group-text" for="RejectionReason">Rejection Reason</label>
-		<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason">
-
 	<label class="input-group-text" for="DeliveryMode">DeliveryMode</label>
 		<input [(ngModel)]="purchaserequest.DeliveryMode" name="DeliveryMode" type="text" class="form-control" id="DeliveryMode">
 
 	<label class="input-group-text" for="Status">Status</label>
-		<input [(ngModel)]="purchaserequest.Status" name="Status" type="text" class="form-control" id="Status">
+	<select [(ngModel)]=purchaserequest.Status class="form-control" id="Status" name="Status">
+		<option value="New">New</option>
+		<option value="Review">Review</option>
+	</select>
 
 	<label class="input-group-text" for="Total">Total</label>
 		<input [(ngModel)]="purchaserequest.Total" name="Total" type="text" class="form-control" id="Total" readonly>
