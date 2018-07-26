@@ -31,7 +31,7 @@ export class PurchaseRequestListComponent implements OnInit {
     .subscribe(resp => {
       this.purchaserequests = resp.Data;
       for (let pr of this.purchaserequests) {
-      if (pr.UserId == this.systemsrv.loggedInUser.Id) {
+      if (pr.UserId == this.systemsrv.loggedInUser.Id && pr.Status != "Review") {
         this.filteredPurchaseRequests.push(pr);
       }
     }

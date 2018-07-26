@@ -7,7 +7,7 @@
   <th style="text-align:right">User: </th><td>{{systemsrv.loggedInUser.Username}}</td>
   <th style="text-align:right">Description: </th><td>{{purchaserequest.Description}}</td>
   <th style="text-align:right">Status: </th><td>{{purchaserequest.Status}}</td>
-  <th style="text-align:right">Total: </th><td>{{purchaserequest.Total | currency}}</td>
+  <th style="text-align:right">Subtotal: </th><td>{{purchaserequest.Total | currency}}</td>
 <br />
 </tr>
 </table>
@@ -28,5 +28,7 @@
       <td><a routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>
+
+<button (click)="review();" class="btn btn-primary">Mark For Review</button>
 
 </div>

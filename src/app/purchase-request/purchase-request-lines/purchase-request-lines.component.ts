@@ -18,7 +18,21 @@ export class PurchaseRequestLinesComponent implements OnInit {
 
   title: string = "Purchase Request Lineitems for PR# ";
 
-  constructor(private systemsrv: SystemService, private router: Router, private prlineitemsrv: PurchaseRequestLineitemService, private route: ActivatedRoute, private purchaserequestsvc: PurchaseRequestService) { }
+  review(): void {
+    this.purchaserequest.Status="Review";
+    this.purchaserequestsvc.change(this.purchaserequest)
+      .subscribe(resp => {
+        console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/list');
+      });
+  }
+
+  constructor(
+    private systemsrv: SystemService, 
+    private router: Router, 
+    private prlineitemsrv: PurchaseRequestLineitemService, 
+    private route: ActivatedRoute, 
+    private purchaserequestsvc: PurchaseRequestService) { }
 
   ngOnInit() {
 

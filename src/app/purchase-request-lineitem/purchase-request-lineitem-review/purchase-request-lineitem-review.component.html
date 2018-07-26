@@ -1,40 +1,68 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
 <div *ngIf="purchaserequest">
-<table class="table table-sm">
-	<tr>
-		<th>Id</th>
-		<th>Description</th>
-		<th>Justification</th>
-		<th>Status</th>
-		<th>Total</th>
-	</tr>
-	<tr>
-		<td>{{purchaserequest.Id}}</td>
-		<td>{{purchaserequest.Description}}</td>
-		<td>{{purchaserequest.Justification}}</td>
-		<td>{{purchaserequest.Status}}</td>
-		<td>{{purchaserequest.Total | currency}}</td>
-	</tr>
-</table>
+	<table class="table table-sm">
+		<tr>
+			<th>Id</th>
+			<th>Description</th>
+			<th>Justification</th>
+			<th>Status</th>
+		</tr>
+		<tr>
+			<td>{{purchaserequest.Id}}</td>
+			<td>{{purchaserequest.Description}}</td>
+			<td>{{purchaserequest.Justification}}</td>
+			<td>{{purchaserequest.Status}}</td>
+		</tr>
+	</table>
 
-<table class="table table-sm">
-	<tr>
-		<th>Product</th>
-		<th>Quantity</th>
-		<th>Price</th>
-		<th>Line Total</th>
-	</tr>
-	<tr *ngFor="let li of purchaserequest.PurchaseRequestLineitems">
-		<td>{{li.Product.Name}}</td>
-		<td>{{li.Quantity}}</td>
-		<td>{{li.Product.Price}}</td>
-		<td>{{li.Quantity*li.Product.Price | currency}}</td>
-	</tr>
-</table>
+	<table class="table table-sm">
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Line Total</th>
+		</tr>
+		<tr *ngFor="let li of purchaserequest.PurchaseRequestLineitems">
+			<td>{{li.Product.Name}}</td>
+			<td>{{li.Quantity}}</td>
+			<td>{{li.Product.Price}}</td>
+			<td>{{li.Quantity*li.Product.Price | currency}}</td>
+		</tr>
+		<br />
+		<tr>
+			<th colspan=3 style="text-align:right;">Subtotal:</th><td>{{purchaserequest.Total | currency}}</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">Tax (10%):</th><td>{{purchaserequest.Total*.10 | currency}}</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">
+				{{delivery ? 
+					"Shipping (5%):" : 
+					"Pickup:"
+				}}
+			</th>
+<!-- 			<td>
+				{{delivery ? 
+					purchaserequest.Total*.05 | currency : 
+					0 | currency
+				}}
+			</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">Total:</th>
+			<td>
+				{{delivery ? 
+					(purchaserequest.Total) + (purchaserequest.Total*.1) + (purchaserequest.Total*.05)| currency : 
+					(purchaserequest.Total) + (purchaserequest.Total*.1) | currency
+				}}
+			</td> -->
+		</tr>
+	</table>
 </div>
 <div>
-	<button (click)="approve();" class="btn btn-success">Approve</button> | <button (click)="rejectstart();" class="btn btn-danger">Reject</button>
+	<button (click)="approve();" class="btn btn-success" style="margin:10px;">Approve</button>  <button (click)="rejectstart();" class="btn btn-danger">Reject</button>
 </div>
 <br />
 <div *ngIf="reject && purchaserequest">

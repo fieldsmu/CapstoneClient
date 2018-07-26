@@ -14,9 +14,10 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class PurchaseRequestLineitemReviewComponent implements OnInit {
 
-	title: string = "Purchase Request Review";
+  	title: string = "Purchase Request Review";
   	purchaserequest: PurchaseRequest;
     reject: boolean = false;
+    delivery: boolean = false;
 
 approve(): void {
   this.purchaserequest.RejectionReason="N/A";
@@ -61,6 +62,9 @@ rejectcomplete(): void {
   		.subscribe(resp => {
   			this.purchaserequest=resp.Data;
   			console.log(resp);
+        if(this.purchaserequest.DeliveryMode=="Delivery"){
+          this.delivery=true;
+        }
   		});
   }
 }
