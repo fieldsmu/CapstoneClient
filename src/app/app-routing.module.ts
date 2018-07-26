@@ -13,6 +13,7 @@ import { VendorListComponent } from './vendor/vendor-list/vendor-list.component'
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorPurchaseOrderComponent } from './vendor/vendor-purchase-order/vendor-purchase-order.component';
 
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
 { path: 'vendors/detail/:id', component: VendorDetailComponent},
 { path: 'vendors/edit/:id', component: VendorEditComponent},
 { path: 'vendors/create', component: VendorCreateComponent},
+{ path: 'vendors/purchaseorder/:id', component: VendorPurchaseOrderComponent},
 
 { path: 'products/list', component: ProductListComponent},
 { path: 'products/detail/:id', component: ProductDetailComponent},

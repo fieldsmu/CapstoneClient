@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div *ngIf="purchaserequest">
 <h3>{{ title }} {{purchaserequest.Id}}</h3>
-<a routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New</a>
+<a routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New Item</a>
 <table class="table table-sm">
 <tr>
   <th style="text-align:right">User: </th><td>{{systemsrv.loggedInUser.Username}}</td>

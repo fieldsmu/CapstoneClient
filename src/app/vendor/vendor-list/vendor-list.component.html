@@ -1,36 +1,39 @@
 <app-menu></app-menu>
-<div>
-<h3>{{title}}</h3>
-<a routerLink='/vendors/create'>Add New</a>
-<table class="table table-sm">
+<div *ngIf="systemsrv.loggedInUser">
+  <h3>{{title}}</h3>
+  <a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a>
+  <table class="table table-sm">
     <tr>
-  	<th>Id</th>
-  	<th>Code</th>
-  	<th>Name</th>
-  	<th>Address</th>
-  	<th>City</th>
-  	<th>State</th>
-  	<th>Zip</th>
-  	<th>Phone</th>
-    <th>Email</th>
-    <th>Preapproved</th>
-    <th>Active</th>
-    <th>Actions</th>
-    </tr>
-    <tr *ngFor="let v of vendors">
-      <td>{{v.Id}}</td>
-      <td>{{v.Code}}</td>
-      <td>{{v.Name}}</td>
-      <td>{{v.Address}}</td>
-      <td>{{v.City}}</td>
-      <td>{{v.State}}</td>
-      <td>{{v.Zip}}</td>
-      <td>{{v.Phone}}</td>
-      <td>{{v.Email}}</td>
-      <td>{{v.IsPreApproved | bool}}</td>
-      <td>{{v.Active | bool}}</td>
-      <td><a routerLink='/vendors/detail/{{ v.Id }}'>Detail</a> | <a routerLink='/vendors/edit/{{v.Id}}'>Edit</a></td>
-    </tr>
+     <th>Id</th>
+     <th>Code</th>
+     <th>Name</th>
+     <th>Address</th>
+     <th>City</th>
+     <th>State</th>
+     <th>Zip</th>
+     <th>Phone</th>
+     <th>Email</th>
+     <th>Preapproved</th>
+     <th>Active</th>
+     <th>Actions</th>
+   </tr>
+   <tr *ngFor="let v of vendors">
+    <td>{{v.Id}}</td>
+    <td>{{v.Code}}</td>
+    <td>{{v.Name}}</td>
+    <td>{{v.Address}}</td>
+    <td>{{v.City}}</td>
+    <td>{{v.State}}</td>
+    <td>{{v.Zip}}</td>
+    <td>{{v.Phone}}</td>
+    <td>{{v.Email}}</td>
+    <td>{{v.IsPreApproved | bool}}</td>
+    <td>{{v.Active | bool}}</td>
+    <td><a routerLink='/vendors/detail/{{ v.Id }}'>Detail</a>
+      <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> | <a routerLink='/vendors/edit/{{v.Id}}'>Edit</a></span>
+       |<a routerLink='/vendors/purchaseorder/{{v.Id}}' style="margin:10px 5px 10px 5px">Create PO</a>
+   </td>
+ </tr>
 </table>
 
 </div>

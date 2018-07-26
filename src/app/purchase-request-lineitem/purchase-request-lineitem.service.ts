@@ -3,6 +3,7 @@ import {HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { PurchaseRequestLineitem } from './purchase-request-lineitem';
 import {JsonResponse} from '../utility/json-response';
+import { Purchaseorder } from '../view-models/purchaseorder';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class PurchaseRequestLineitemService {
 
 	remove(purchaserequestlineitem: PurchaseRequestLineitem): Observable<JsonResponse> {
 		return this.http.post(this.url+"Remove",purchaserequestlineitem) as Observable<JsonResponse>;
+	}
+
+	purchaseorder(id:number): Observable<JsonResponse> {
+		return this.http.get(this.url+"PurchaseOrder/"+id) as Observable<JsonResponse>;
 	}
 
 	constructor(private http: HttpClient) { }

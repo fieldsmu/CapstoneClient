@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div *ngIf="filteredPurchaseRequests">
+<div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true;">
 <table class="table table-sm">
 	<tr>
 		<th>Description</th>
@@ -20,4 +20,7 @@
 		<td><a routerLink="/purchaserequestlineitems/review/{{fpr.Id}}">Review</a></td>
 	</tr>
 </table>
+</div>
+<div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==false" style="color:red; margin:10px;">
+	You do not have reviewer rights. Please contact network admin for assistance.
 </div>

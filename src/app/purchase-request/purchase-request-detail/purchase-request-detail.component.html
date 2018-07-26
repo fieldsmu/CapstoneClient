@@ -12,11 +12,11 @@
 	<tr><th>User</th><td>{{ purchaserequest.User.Username }}</td></tr>
 
     <tr><td colspan=2>
-    	<a routerLink='/purchaserequests/edit/{{purchaserequest.Id}}' class="btn btn-primary">Edit</a> | 
-    <button (click)="remove();" class="btn btn-danger"> Remove</button>
-    <span *ngIf="deleteConfirmed">
-    	| <button (click)="confirmed();" class="btn btn-warning">Confirm Delete</button>
-    </span>
-	</tr>
+    	<a routerLink='/purchaserequests/edit/{{purchaserequest.Id}}' class="btn btn-primary" style="margin:10px 5px 10px 0px;">Edit</a>
+    	<button (click)="remove();" class="btn btn-danger" style="margin:10px 5px 10px 5px;"> Remove</button>
+    	<span *ngIf="deleteConfirmed">
+    		<button (click)="confirmed();" class="btn btn-warning" style="margin:10px 5px 10px 0px;">Confirm Delete</button>
+    	</span>
+    </td></tr>
 </table>
 </div>

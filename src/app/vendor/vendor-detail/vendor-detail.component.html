@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<div>
+<div *ngIf="systemsrv.loggedInUser && vendor">
 <table *ngIf="vendor" class="table table-sm">
 	<tr><th>Id</th><td>{{ vendor.Id }}</td></tr>
   	<tr><th>Code</th><td>{{ vendor.Code }}</td></tr>
@@ -14,11 +14,13 @@
   	<tr><th>Preapproved</th><td>{{ vendor.IsPreApproved  | bool}}</td></tr>
     <tr><th>Active</th><td>{{ vendor.Active  | bool}}</td></tr>
     <tr><td colspan=2>
-    	<a routerLink='/vendors/edit/{{vendor.Id}}' class="btn btn-primary">Edit</a> | 
-    <button (click)="remove();" class="btn btn-danger"> Remove</button>
+    <span  *ngIf="systemsrv.loggedInUser.IsAdmin==true;">
+    	<a routerLink='/vendors/edit/{{vendor.Id}}' class="btn btn-primary" style="margin:10px 5px 10px 0px;">Edit</a>
+    <button (click)="remove();" class="btn btn-danger" style="margin:10px 5px 10px 5px;"> Remove</button>
     <span *ngIf="deleteConfirmed">
-    	| <button (click)="confirmed();" class="btn btn-warning">Confirm Delete</button>
+      <button (click)="confirmed();" class="btn btn-warning" style="margin:10px 10px 10px 5px;">Confirm Delete</button>
     </span>
+  </span>
 	</tr>
 </table>
 </div>

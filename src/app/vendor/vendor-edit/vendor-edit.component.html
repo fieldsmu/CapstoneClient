@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<div style="width:60%; padding: 10px;" *ngIf="vendor">
+<div style="width:60%; padding: 10px;" *ngIf="vendor && systemsrv.loggedInUser.IsAdmin==true">
 	<label class="input-group-text" for="Code">Code</label>
 		<input [(ngModel)]="vendor.Code" name="Code" type="text" class="form-control" id="Code">
 
@@ -37,6 +37,6 @@
 			<option [ngValue]="false">No</option>
 		</select>
 
-	<button (click)="change()" class="btn btn-primary">Save Changes</button>
+	<button (click)="change()" class="btn btn-primary" style="margin:10px 10px 10px 0px;">Save Changes</button>
 
 </div>

@@ -1,0 +1,18 @@
+<app-menu></app-menu>
+<h3>{{Title}}</h3>
+<div *ngIf="purchaseorderitems">
+	<table class="table table-sm">
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Line Total</th>
+		</tr>
+		<tr *ngFor="let po of purchaseorderitems">
+			<td>{{po.name}}</td>
+			<td>{{po.quantity}}</td>
+			<td>{{po.price}}</td>
+			<td>HOLDER</td>
+		</tr>
+	</table>
+</div>

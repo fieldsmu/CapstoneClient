@@ -6,7 +6,9 @@
 	<label class="input-group-text" for="Password">Password</label>
 		<input [(ngModel)]="user.Password" name="Password" type="Password" class="form-control" id="Password">
 
-	<button (click)="login()" class="btn btn-primary">Submit</button>
-	<div *ngIf="showFailed" style="color:red;">Login failed</div>
+
+	<button (click)="login()" class="btn btn-primary" style="margin:10px 10px 10px 0px;">Submit</button>
+	
+	<span *ngIf="showFailed" style="color:red;">Login failed</span>
 
 </div>

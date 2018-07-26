@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div>
 <h3>{{ title }}</h3>
-<a routerLink='/products/create'>Add New Product</a>
+<a routerLink='/products/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New Product</a>
 <table class="table table-sm">
 	<tr>
 		<th>Id</th>
@@ -23,7 +23,11 @@
 		<td>{{p.PhotoPath}}</td>
 		<td>{{p.Active | bool}}</td>
 		<td>{{p.Vendor.Name}}</td>
-		<td><a routerLink='/products/detail/{{p.Id}}'>Detail</a> | <a routerLink='/products/edit/{{p.Id}}'>Edit</a>
+		<td><a routerLink='/products/detail/{{p.Id}}'>Detail</a>
+		<span *ngIf="systemsrv.loggedInUser.IsAdmin==true;">
+		 | <a routerLink='/products/edit/{{p.Id}}'>Edit</a>
+		</span>
+	</td>
 	</tr>
 </table>
 

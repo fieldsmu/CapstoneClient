@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<div *ngIf="purchaserequest">
+<div *ngIf="purchaserequest && systemsrv.loggedInUser.IsReviewer==true;">
 	<table class="table table-sm">
 		<tr>
 			<th>Id</th>
@@ -37,16 +37,11 @@
 			<th colspan=3 style="text-align:right;">Tax (10%):</th><td>{{purchaserequest.Total*.10 | currency}}</td>
 		</tr>
 		<tr>
-			<th colspan=3 style="text-align:right;">
+			<th colspan=3 style="text-align:right;">Shipping (5%):</th>
+			<td>
 				{{delivery ? 
-					"Shipping (5%):" : 
-					"Pickup:"
-				}}
-			</th>
-<!-- 			<td>
-				{{delivery ? 
-					purchaserequest.Total*.05 | currency : 
-					0 | currency
+					(purchaserequest.Total*.05 | currency) : 
+					"(Pickup)"
 				}}
 			</td>
 		</tr>
@@ -54,19 +49,20 @@
 			<th colspan=3 style="text-align:right;">Total:</th>
 			<td>
 				{{delivery ? 
-					(purchaserequest.Total) + (purchaserequest.Total*.1) + (purchaserequest.Total*.05)| currency : 
-					(purchaserequest.Total) + (purchaserequest.Total*.1) | currency
+					((purchaserequest.Total) + (purchaserequest.Total*.1) + (purchaserequest.Total*.05) | currency) : 
+					((purchaserequest.Total) + (purchaserequest.Total*.1) | currency)
 				}}
-			</td> -->
+			</td>
 		</tr>
 	</table>
 </div>
 <div>
-	<button (click)="approve();" class="btn btn-success" style="margin:10px;">Approve</button>  <button (click)="rejectstart();" class="btn btn-danger">Reject</button>
+	<button (click)="approve();" class="btn btn-success" style="margin:10px 10px 10px 0px;">Approve</button>
+	<button (click)="rejectstart();" class="btn btn-danger" style="margin:0px 5px 0px 0px;">Reject</button>
+
+	<span *ngIf="reject && purchaserequest">
+		<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason" placeholder = "Enter reason for rejection here">
+		<button (click)="rejectcomplete();" class="btn btn-danger">Complete</button>
+	</span>
 </div>
-<br />
-<div *ngIf="reject && purchaserequest">
-	<label class="input-group-text" for="RejectionReason">Rejection Reason</label>
-	<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason" placeholder = "Enter reason for rejection here">
-	<button (click)="rejectcomplete();" class="btn btn-danger">Complete</button>
-</div>
+
