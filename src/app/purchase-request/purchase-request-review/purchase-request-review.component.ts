@@ -5,6 +5,8 @@ import { JsonResponse } from '../../utility/json-response';
 import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router';
 import {CurrencyPipe } from '@angular/common';
+import { SortPipe } from '../../utility/sort.pipe';
+
 
 @Component({
 	selector: 'app-purchase-request-review',
@@ -16,6 +18,18 @@ export class PurchaseRequestReviewComponent implements OnInit {
 
 	purchaserequests: PurchaseRequest[];
 	filteredPurchaseRequests: PurchaseRequest[] = [];
+
+	sortProperty: string = "Id";
+  	sortOrder: string = "asc";
+
+	  sort(sortBy: string): void {
+	    if(sortBy === this.sortProperty)
+	      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+	    else {
+	      this.sortProperty = sortBy;
+	      this.sortOrder = 'asc';
+	    }
+	  }
 
 	constructor(private purchaserequestsvc: PurchaseRequestService, private systemsrv: SystemService, private router: Router) { }
 

@@ -1,16 +1,16 @@
 <app-menu></app-menu>
-<div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true;">
+<div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true && sortProperty && sortOrder">
 <table class="table table-sm">
 	<tr>
-		<th>Description</th>
-		<th>Justification</th>
-		<th>Delivery Mode</th>
+		<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
+		<th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
+		<th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
 		<th>Status</th>
-		<th>Total</th>
+		<th><a (click)="sort('Total')">Total <img src='/assets/sort.png'></a></th>
 		<th>User</th>
 		<th>Actions</th>
 	</tr>
-	<tr *ngFor="let fpr of filteredPurchaseRequests">
+	<tr *ngFor="let fpr of filteredPurchaseRequests | sort:sortProperty:sortOrder">
 		<td>{{fpr.Description}}</td>
 		<td>{{fpr.Justification}}</td>
 		<td>{{fpr.DeliveryMode}}</td>

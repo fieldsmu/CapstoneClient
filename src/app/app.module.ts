@@ -42,6 +42,10 @@ import { PurchaseRequestLineitemEditComponent } from './purchase-request-lineite
 import { PurchaseRequestLineitemListComponent } from './purchase-request-lineitem/purchase-request-lineitem-list/purchase-request-lineitem-list.component';
 import { PurchaseRequestLineitemReviewComponent } from './purchase-request-lineitem/purchase-request-lineitem-review/purchase-request-lineitem-review.component';
 import { VendorPurchaseOrderComponent } from './vendor/vendor-purchase-order/vendor-purchase-order.component';
+import { SortPipe } from './utility/sort.pipe';
+import { SearchProductPipe } from './utility/search-product.pipe';
+import { SearchUserPipe } from './utility/search-user.pipe';
+import { SearchVendorPipe } from './utility/search-vendor.pipe';
 
 @NgModule({
   declarations: [
@@ -75,7 +79,11 @@ import { VendorPurchaseOrderComponent } from './vendor/vendor-purchase-order/ven
     PurchaseRequestLinesComponent,
     PurchaseRequestReviewComponent,
     PurchaseRequestLineitemReviewComponent,
-    VendorPurchaseOrderComponent
+    VendorPurchaseOrderComponent,
+    SortPipe,
+    SearchProductPipe,
+    SearchUserPipe,
+    SearchVendorPipe
   ],
   imports: [
     BrowserModule,

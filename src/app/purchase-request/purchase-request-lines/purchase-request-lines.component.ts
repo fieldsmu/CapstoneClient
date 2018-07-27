@@ -6,6 +6,7 @@ import {PurchaseRequestLineitem } from '../../purchase-request-lineitem/purchase
 import { PurchaseRequest } from '../../purchase-request/purchase-request';
 import { PurchaseRequestService } from '../../purchase-request/purchase-request.service';
 import { CurrencyPipe } from '@angular/common';
+import { SortPipe } from '../../utility/sort.pipe';
 
 @Component({
   selector: 'app-purchase-request-lines',
@@ -17,6 +18,18 @@ export class PurchaseRequestLinesComponent implements OnInit {
   purchaserequest: PurchaseRequest;
 
   title: string = "Purchase Request Lineitems for PR# ";
+
+  sortProperty: string = "Id";
+  sortOrder: string = "asc";
+
+  sort(sortBy: string): void {
+    if(sortBy === this.sortProperty)
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    else {
+      this.sortProperty = sortBy;
+      this.sortOrder = 'asc';
+    }
+  }
 
   review(): void {
     this.purchaserequest.Status="Review";

@@ -4,6 +4,8 @@ import { User } from '../user';
 import { JsonResponse } from '../../utility/json-response';
 import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router';
+import { SortPipe } from '../../utility/sort.pipe';
+import { SearchUserPipe } from '../../utility/search-user.pipe';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +19,25 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  constructor(private usersvc: UserService, private systemsrv: SystemService, private router: Router) { }
+  sortProperty: string = "Id";
+  sortOrder: string = "asc";
+
+  searchCriteria: string = '';
+
+  sort(sortBy: string): void {
+    if(sortBy === this.sortProperty)
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    else {
+      this.sortProperty = sortBy;
+      this.sortOrder = 'asc';
+    }
+  }
+
+  constructor(
+    private usersvc: UserService,
+    private systemsrv: SystemService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
 

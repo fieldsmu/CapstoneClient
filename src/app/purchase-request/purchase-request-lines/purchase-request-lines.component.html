@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div *ngIf="purchaserequest">
+<div *ngIf="purchaserequest && sortProperty && sortOrder">
 <h3>{{ title }} {{purchaserequest.Id}}</h3>
 <a routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New Item</a>
 <table class="table table-sm">
@@ -15,12 +15,12 @@
 <table class="table table-sm">
     <tr>
   	<th>Product</th>
-    <th>Quantity</th>
+    <th><a (click)="sort('Quantity')">Quantity <img src='/assets/sort.png'></a></th>
   	<th>Price</th>
     <th>Line Total</th>
     <th>Action</th>
     </tr>
-    <tr *ngFor="let prli of purchaserequest.PurchaseRequestLineitems">
+    <tr *ngFor="let prli of purchaserequest.PurchaseRequestLineitems | sort:sortProperty:sortOrder">
       <td>{{prli.Product.Name}}</td>
       <td>{{prli.Quantity}}</td>
       <td>{{prli.Product.Price | currency}}</td>

@@ -1,23 +1,26 @@
 <app-menu></app-menu>
-<div *ngIf="systemsrv.loggedInUser">
+<div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && vendors">
   <h3>{{title}}</h3>
-  <a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a>
+  <span style="float:left; width:30%;"><a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a></span>
+  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
+<br />
+<br />
   <table class="table table-sm">
     <tr>
-     <th>Id</th>
-     <th>Code</th>
-     <th>Name</th>
-     <th>Address</th>
-     <th>City</th>
-     <th>State</th>
-     <th>Zip</th>
-     <th>Phone</th>
-     <th>Email</th>
-     <th>Preapproved</th>
-     <th>Active</th>
+     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Code')">Code <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Name')">Name <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Address')">Address <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('City')">City <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('State')">State <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Zip')">Zip <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Phone')">Phone <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Email')">Email <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('IsPreApproved')">Preapproved <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Active')">Active <img src='/assets/sort.png'></a></th>
      <th>Actions</th>
    </tr>
-   <tr *ngFor="let v of vendors">
+   <tr *ngFor="let v of vendors | searchVendor:searchCriteria | sort:sortProperty:sortOrder">
     <td>{{v.Id}}</td>
     <td>{{v.Code}}</td>
     <td>{{v.Name}}</td>

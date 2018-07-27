@@ -1,17 +1,17 @@
 <app-menu></app-menu>
-<div>
+<div *ngIf="systemsrv.loggedInUser && purchaserequestlineitems && sortProperty && sortOrder">
 <h3>{{ title }}</h3>
 <a routerLink='/purchaserequestlineitems/create'>Add New</a>
 <table class="table table-sm">
     <tr>
-  	<th>Id</th>
-  	<th>Description</th>
-  	<th>Quantity</th>
-  	<th>ProductId</th>
+  	<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Quantity')">Quantity <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('ProductId')">ProductId <img src='/assets/sort.png'></a></th>
   	<th>Product</th>
-  	<th>Purchase Request Id</th>
+  	<th><a (click)="sort('PurchaseRequestId')">Purchase Request Id <img src='/assets/sort.png'></a></th>
     </tr>
-    <tr *ngFor="let prli of purchaserequestlineitems">
+    <tr *ngFor="let prli of purchaserequestlineitems | sort:sortProperty:sortOrder">
       <td>{{prli.Id}}</td>
       <td>{{prli.Description}}</td>
       <td>{{prli.Quantity}}</td>

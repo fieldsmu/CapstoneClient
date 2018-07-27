@@ -1,20 +1,20 @@
 <app-menu></app-menu>
 <div>
-<h3 *ngIf="this.systemsrv.loggedInUser.Username || filteredPurchaseRequests || purchaserequests">{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
+<h3 *ngIf="this.systemsrv.loggedInUser.Username && filteredPurchaseRequests && purchaserequests && sortProperty && sortOrder">{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
 <a routerLink='/purchaserequests/create'>Add New</a>
 <table class="table table-sm">
     <tr>
-  	<th>Id</th>
-  	<th>Description</th>
-  	<th>Justification</th>
-  	<th>Rejection Reason</th>
-  	<th>Delivery Mode</th>
-  	<th>Status</th>
-  	<th>Subtotal</th>
+  	<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('RejectionReason')">Rejection Reason <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Status')">Status <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Total')">Subtotal <img src='/assets/sort.png'></a></th>
   	<th>User</th>
     <th>Actions</th>
     </tr>
-    <tr *ngFor="let pr of filteredPurchaseRequests">
+    <tr *ngFor="let pr of filteredPurchaseRequests | sort:sortProperty:sortOrder">
       <td>{{pr.Id}}</td>
       <td>{{pr.Description}}</td>
       <td>{{pr.Justification}}</td>

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
+import { SortPipe } from '../../utility/sort.pipe';
+import { SearchProductPipe } from '../../utility/search-product.pipe';
 
 @Component({
   selector: 'app-product-list',
@@ -15,6 +17,20 @@ export class ProductListComponent implements OnInit {
 products: Product[];
 
 title: string= "Product List";
+
+sortProperty: string = "Id";
+sortOrder: string = "asc";
+searchCriteria: string = '';  
+
+
+  sort(sortBy: string): void {
+    if(sortBy === this.sortProperty)
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    else {
+      this.sortProperty = sortBy;
+      this.sortOrder = 'asc';
+    }
+  }
 
   constructor(private productsvc: ProductService, private systemsrv: SystemService, private router: Router) { }
 
