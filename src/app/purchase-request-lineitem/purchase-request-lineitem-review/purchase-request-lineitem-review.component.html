@@ -7,12 +7,14 @@
 			<th>Description</th>
 			<th>Justification</th>
 			<th>Status</th>
+			<th>Total</th>
 		</tr>
 		<tr>
 			<td>{{purchaserequest.Id}}</td>
 			<td>{{purchaserequest.Description}}</td>
 			<td>{{purchaserequest.Justification}}</td>
 			<td>{{purchaserequest.Status}}</td>
+			<td>{{purchaserequest.Total| currency}}
 		</tr>
 	</table>
 
@@ -28,31 +30,6 @@
 			<td>{{li.Quantity}}</td>
 			<td>{{li.Product.Price}}</td>
 			<td>{{li.Quantity*li.Product.Price | currency}}</td>
-		</tr>
-		<br />
-		<tr>
-			<th colspan=3 style="text-align:right;">Subtotal:</th><td>{{purchaserequest.Total | currency}}</td>
-		</tr>
-		<tr>
-			<th colspan=3 style="text-align:right;">Tax (10%):</th><td>{{purchaserequest.Total*.10 | currency}}</td>
-		</tr>
-		<tr>
-			<th colspan=3 style="text-align:right;">Shipping (5%):</th>
-			<td>
-				{{delivery ? 
-					(purchaserequest.Total*.05 | currency) : 
-					"(Pickup)"
-				}}
-			</td>
-		</tr>
-		<tr>
-			<th colspan=3 style="text-align:right;">Total:</th>
-			<td>
-				{{delivery ? 
-					((purchaserequest.Total) + (purchaserequest.Total*.1) + (purchaserequest.Total*.05) | currency) : 
-					((purchaserequest.Total) + (purchaserequest.Total*.1) | currency)
-				}}
-			</td>
 		</tr>
 	</table>
 </div>

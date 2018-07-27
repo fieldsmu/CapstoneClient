@@ -1,7 +1,10 @@
+import { Product } from '../product/product';
+
 export class Purchaseorder {
 
-		name: string;
-		pid: number;
-		quantity: number;
-		price: number;
+		Name: string;
+		PId: number;
+		Quantity: number;
+		Price: number;
+		Product: Product
 }

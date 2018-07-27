@@ -2,6 +2,25 @@
 <h3>{{Title}}</h3>
 <div *ngIf="purchaseorderitems">
 	<table class="table table-sm">
+ 		<tr>
+			<th colspan=2>Address:</th>
+			<th colspan=2>Customer:</th>
+			<br />
+		<tr>
+		<tr>
+			<td colspan=2>
+				{{vendorname}}
+				<br />
+				{{address}}
+				<br />
+				{{city}}, {{state}} {{zip}}
+			</td>
+			<td colspan=2>
+				{{systemsrv.loggedInUser.Firstname}} {{systemsrv.loggedInUser.Lastname}}
+			</td>
+		</tr>
+		<br />
+		<br />
 		<tr>
 			<th>Product</th>
 			<th>Quantity</th>
@@ -9,10 +28,35 @@
 			<th>Line Total</th>
 		</tr>
 		<tr *ngFor="let po of purchaseorderitems">
-			<td>{{po.name}}</td>
-			<td>{{po.quantity}}</td>
-			<td>{{po.price}}</td>
-			<td>HOLDER</td>
+			<td>{{po.Name}}</td>
+			<td>{{po.Quantity}}</td>
+			<td>{{po.Price | currency}}</td>
+			<td>{{po.Quantity*po.Price | currency}}</td>
 		</tr>
+		<br />
+		<tr>
+			<th colspan=3 style="text-align:right;">Subtotal:</th><td>{{itemstotal | currency}}</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">Tax (10%):</th><td>{{itemstotal*.10 | currency}}</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">Shipping (5%):</th>
+			<td>
+				{{itemstotal*.05 | currency}}
+			</td>
+		</tr>
+		<tr>
+			<th colspan=3 style="text-align:right;">Total:</th>
+			<td>
+				{{delivery ? 
+					((itemstotal) + (itemstotal*.1) + (itemstotal*.05) | currency) : 
+					((itemstotal) + (itemstotal*.1) | currency)
+				}}
+			</td>
+		</tr>
+
 	</table>
 </div>
+
+
