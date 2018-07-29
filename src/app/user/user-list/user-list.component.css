@@ -1,3 +1,11 @@
 a:hover	{
 	cursor: pointer;
 }
+
+input {
+    -webkit-appearance: searchfield;
+}
+
+*::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}

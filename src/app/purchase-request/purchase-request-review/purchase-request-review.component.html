@@ -1,5 +1,10 @@
 <app-menu></app-menu>
+<h3 >{{title}}</h3>
 <div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true && sortProperty && sortOrder">
+<span style="float:right; padding:5px 10px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span>
+  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
+<br />
+<br />
 <table class="table table-sm">
 	<tr>
 		<th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
@@ -7,16 +12,16 @@
 		<th><a (click)="sort('DeliveryMode')">Delivery Mode  <i class="fas fa-sort"></i></a></th>
 		<th>Status</th>
 		<th><a (click)="sort('Total')">Total  <i class="fas fa-sort"></i></a></th>
-		<th>User</th>
+		<th><a (click)="sort('PRUser')">User  <i class="fas fa-sort"></i></a></th>
 		<th>Actions</th>
 	</tr>
-	<tr *ngFor="let fpr of filteredPurchaseRequests | sort:sortProperty:sortOrder">
+	<tr *ngFor="let fpr of filteredPurchaseRequests | searchPurchaseRequestReview:searchCriteria | sort:sortProperty:sortOrder">
 		<td>{{fpr.Description}}</td>
 		<td>{{fpr.Justification}}</td>
 		<td>{{fpr.DeliveryMode}}</td>
 		<td>{{fpr.Status}}</td>
 		<td>{{fpr.Total | currency}}</td>
-		<td>{{fpr.User.Username}}</td>
+		<td>{{fpr.PRUser}}</td>
 		<td><a routerLink="/purchaserequestlineitems/review/{{fpr.Id}}">Review</a></td>
 	</tr>
 </table>

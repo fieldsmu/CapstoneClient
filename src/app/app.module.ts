@@ -47,6 +47,7 @@ import { SearchProductPipe } from './utility/search-product.pipe';
 import { SearchUserPipe } from './utility/search-user.pipe';
 import { SearchVendorPipe } from './utility/search-vendor.pipe';
 import { SearchPurchaseRequestPipe } from './utility/search-purchase-request.pipe';
+import { SearchPurchaseRequestReviewPipe } from './utility/search-purchase-request-review.pipe';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { SearchPurchaseRequestPipe } from './utility/search-purchase-request.pip
     SearchProductPipe,
     SearchUserPipe,
     SearchVendorPipe,
-    SearchPurchaseRequestPipe
+    SearchPurchaseRequestPipe,
+    SearchPurchaseRequestReviewPipe
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router';
 import {CurrencyPipe } from '@angular/common';
 import { SortPipe } from '../../utility/sort.pipe';
+import { SearchPurchaseRequestReviewPipe } from '../../utility/search-purchase-request-review.pipe';
+
 
 
 @Component({
@@ -16,12 +18,15 @@ import { SortPipe } from '../../utility/sort.pipe';
 
 export class PurchaseRequestReviewComponent implements OnInit {
 
+	title:string="Purchase Requests Review";
+
 	purchaserequests: PurchaseRequest[];
 	filteredPurchaseRequests: PurchaseRequest[] = [];
 
+	searchCriteria: string = '';
+
 	sortProperty: string = "Id";
   	sortOrder: string = "asc";
-
 	  sort(sortBy: string): void {
 	    if(sortBy === this.sortProperty)
 	      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -47,6 +52,9 @@ export class PurchaseRequestReviewComponent implements OnInit {
 				if (pr.UserId != this.systemsrv.loggedInUser.Id && pr.Status == "Review") {
 					this.filteredPurchaseRequests.push(pr);
 				}
+			}
+			for (let fpr of this.filteredPurchaseRequests) {
+				fpr.PRUser = fpr.User.Username;
 			}
 		});
 	}

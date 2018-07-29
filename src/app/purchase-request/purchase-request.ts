@@ -13,4 +13,5 @@ export class PurchaseRequest {
 	UserId: number;
 	User: User;
 	PurchaseRequestLineitems: PurchaseRequestLineitem[];
+	PRUser:string;
 }

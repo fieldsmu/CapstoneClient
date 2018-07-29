@@ -2,7 +2,8 @@
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && vendors">
   <h3>{{title}}</h3>
   <span style="float:left; width:30%;"><a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a></span>
-  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search"></span>
+  <span style="float:right; padding:5px 2px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span> 
+  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
 <br />
 <br />
   <table class="table table-sm">
