@@ -1,30 +1,31 @@
 <app-menu></app-menu>
-<div>
-<h3 *ngIf="this.systemsrv.loggedInUser.Username && filteredPurchaseRequests && purchaserequests && sortProperty && sortOrder">{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
-<a routerLink='/purchaserequests/create'>Add New</a>
-<table class="table table-sm">
+<div *ngIf="this.systemsrv.loggedInUser && filteredPurchaseRequests && purchaserequests && sortProperty && sortOrder">
+  <h3 >{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
+  <span style="float:left; width:30%;"><a routerLink='/purchaserequests/create'>Add New</a></span>
+  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search"></span>
+  <br />
+  <br />
+  <table class="table table-sm">
     <tr>
-  	<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('RejectionReason')">Rejection Reason <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Status')">Status <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Total')">Subtotal <img src='/assets/sort.png'></a></th>
-  	<th>User</th>
-    <th>Actions</th>
+     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('RejectionReason')">Rejection Reason <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Status')">Status <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Total')">Subtotal <img src='/assets/sort.png'></a></th>
+     <th>Actions</th>
+   </tr>
+   <tr *ngFor="let pr of filteredPurchaseRequests | searchPurchaseRequest:searchCriteria | sort:sortProperty:sortOrder">
+    <td>{{pr.Id}}</td>
+    <td>{{pr.Description}}</td>
+    <td>{{pr.Justification}}</td>
+    <td>{{pr.RejectionReason}}</td>
+    <td>{{pr.DeliveryMode}}</td>
+    <td>{{pr.Status}}</td>
+    <td>{{pr.Total | currency}}</td>
+    <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> | 
+      <a routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a></td>
     </tr>
-    <tr *ngFor="let pr of filteredPurchaseRequests | sort:sortProperty:sortOrder">
-      <td>{{pr.Id}}</td>
-      <td>{{pr.Description}}</td>
-      <td>{{pr.Justification}}</td>
-      <td>{{pr.RejectionReason}}</td>
-      <td>{{pr.DeliveryMode}}</td>
-      <td>{{pr.Status}}</td>
-      <td>{{pr.Total | currency}}</td>
-      <td>{{pr.User.Username}}</td>
-      <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> | 
-          <a routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a></td>
-    </tr>
-</table>
+  </table>
 </div>

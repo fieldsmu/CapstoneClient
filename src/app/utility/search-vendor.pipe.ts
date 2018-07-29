@@ -11,14 +11,14 @@ export class SearchVendorPipe implements PipeTransform {
 		for (let vendor of vendors) {
 			if (
 				vendor.Id.toString().includes(searchFor) ||
-				vendor.Code.includes(searchFor) ||
-				vendor.Name.includes(searchFor) ||
-				vendor.Address.includes(searchFor) ||
-				vendor.City.includes(searchFor) ||
-				vendor.State.includes(searchFor) ||
-				vendor.Zip.includes(searchFor) ||
-				vendor.Phone.includes(searchFor) ||
-				vendor.Email.includes(searchFor)
+				vendor.Code.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.Name.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.Address.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.City.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.State.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.Zip.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.Phone.toUpperCase().includes(searchFor.toUpperCase()) ||
+				vendor.Email.toUpperCase().includes(searchFor.toUpperCase())
 				) {
 				srchVendors.push(vendor);
 		}

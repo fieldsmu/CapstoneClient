@@ -2,7 +2,7 @@
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && users">
   <h3>{{ title }}</h3>
   <span style="float:left; width:30%;"><a *ngIf="systemsrv.loggedInUser.IsAdmin==true;" routerLink='/users/create'>Add New</a></span>
-  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
+  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search"></span>
   <br />
   <br />
   <table class="table table-sm">

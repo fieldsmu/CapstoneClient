@@ -6,6 +6,7 @@ import { SystemService } from '../../system/system.service';
 import { Router } from '@angular/router'
 import { CurrencyPipe } from '@angular/common';
 import { SortPipe } from '../../utility/sort.pipe';
+import { SearchPurchaseRequestPipe } from '../../utility/search-purchase-request.pipe';
 
 
 @Component({
@@ -20,9 +21,10 @@ export class PurchaseRequestListComponent implements OnInit {
   purchaserequests: PurchaseRequest[];
   filteredPurchaseRequests: PurchaseRequest[] = [];
 
+  searchCriteria: string = '';
+
   sortProperty: string = "Id";
   sortOrder: string = "asc";
-
   sort(sortBy: string): void {
     if(sortBy === this.sortProperty)
       this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';

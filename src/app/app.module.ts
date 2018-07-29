@@ -46,6 +46,7 @@ import { SortPipe } from './utility/sort.pipe';
 import { SearchProductPipe } from './utility/search-product.pipe';
 import { SearchUserPipe } from './utility/search-user.pipe';
 import { SearchVendorPipe } from './utility/search-vendor.pipe';
+import { SearchPurchaseRequestPipe } from './utility/search-purchase-request.pipe';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { SearchVendorPipe } from './utility/search-vendor.pipe';
     SortPipe,
     SearchProductPipe,
     SearchUserPipe,
-    SearchVendorPipe
+    SearchVendorPipe,
+    SearchPurchaseRequestPipe
   ],
   imports: [
     BrowserModule,
