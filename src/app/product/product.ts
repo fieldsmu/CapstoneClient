@@ -11,10 +11,12 @@ export class Product {
 	Active: boolean;
 	VendorId: number;
 	Vendor: Vendor;
+	VendorName: string="";
 
 	constructor() {
 		this.Id = 0;
 		this.Active = false;
 		this.PhotoPath="N/A";
+
 	}
 }

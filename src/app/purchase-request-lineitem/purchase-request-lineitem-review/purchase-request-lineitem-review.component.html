@@ -20,15 +20,15 @@
 
 	<table class="table table-sm">
 		<tr>
-			<th>Product</th>
-			<th>Quantity</th>
+			<th><a (click)="sort('ProductName')">Product <img src='/assets/sort.png'></a></th>
+			<th><a (click)="sort('Quantity')">Quantity <img src='/assets/sort.png'></a></th>
 			<th>Price</th>
 			<th>Line Total</th>
 		</tr>
-		<tr *ngFor="let li of purchaserequest.PurchaseRequestLineitems">
-			<td>{{li.Product.Name}}</td>
+		<tr *ngFor="let li of purchaserequest.PurchaseRequestLineitems | sort:sortProperty:sortOrder">
+			<td>{{li.ProductName}}</td>
 			<td>{{li.Quantity}}</td>
-			<td>{{li.Product.Price}}</td>
+			<td>{{li.Product.Price | currency}}</td>
 			<td>{{li.Quantity*li.Product.Price | currency}}</td>
 		</tr>
 	</table>

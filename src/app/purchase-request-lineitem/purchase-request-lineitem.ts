@@ -10,5 +10,9 @@ export class PurchaseRequestLineitem {
 	Product: Product;
 	PurchaseRequestId: number;
 	PurchaseRequest: PurchaseRequest;
+	ProductName: string;
 
+	constructor() {
+		
+	}
 }

@@ -14,7 +14,7 @@
 		<th><a (click)="sort('Unit')">Unit  <img src='/assets/sort.png'></a></th>
 		<th><a (click)="sort('PhotoPath')">Photo Path  <img src='/assets/sort.png'></a></th>
 		<th><a (click)="sort('Active')">Active  <img src='/assets/sort.png'></a></th>
-		<th>Vendor</th>
+		<th><a (click)="sort('VendorName')">Vendor  <img src='/assets/sort.png'></a></th>
 		<th>Actions</th>
 	</tr>
 	<tr *ngFor="let p of products | searchProduct:searchCriteria | sort:sortProperty:sortOrder">
@@ -25,7 +25,7 @@
 		<td>{{p.Unit}}</td>
 		<td>{{p.PhotoPath}}</td>
 		<td>{{p.Active | bool}}</td>
-		<td>{{p.Vendor.Name}}</td>
+		<td>{{p.VendorName}}</td>
 		<td><a routerLink='/products/detail/{{p.Id}}'>Detail</a>
 			<span *ngIf="systemsrv.loggedInUser.IsAdmin==true;">
 		 	| <a routerLink='/products/edit/{{p.Id}}'>Edit</a>

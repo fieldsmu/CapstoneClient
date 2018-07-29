@@ -62,6 +62,9 @@ export class PurchaseRequestLinesComponent implements OnInit {
     this.purchaserequestsvc.get(id)
     .subscribe(resp => {
       this.purchaserequest = resp.Data;
+      for (let prli of this.purchaserequest.PurchaseRequestLineitems) {
+        prli.ProductName = prli.Product.Name;
+      }
       console.log(resp);
     });
     }

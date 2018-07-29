@@ -18,11 +18,11 @@ products: Product[];
 
 title: string= "Product List";
 
+
+searchCriteria: string='';
+
 sortProperty: string = "Id";
-sortOrder: string = "asc";
-searchCriteria: string = '';  
-
-
+sortOrder: string = "asc";  
   sort(sortBy: string): void {
     if(sortBy === this.sortProperty)
       this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -45,6 +45,9 @@ searchCriteria: string = '';
   		.subscribe(resp => {
   			this.products = resp.Data;
   			console.log(resp);
+        for(let product of this.products) {
+          product.VendorName = product.Vendor.Name;
+        }
   		});
   }
 

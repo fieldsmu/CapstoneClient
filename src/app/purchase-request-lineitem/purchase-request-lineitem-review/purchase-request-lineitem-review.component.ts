@@ -6,6 +6,7 @@ import { PurchaseRequestLineitem } from '../../purchase-request-lineitem/purchas
 import { PurchaseRequestLineitemService } from '../../purchase-request-lineitem/purchase-request-lineitem.service';
 import { SystemService } from '../../system/system.service';
 import { CurrencyPipe } from '@angular/common';
+import { SortPipe } from '../../utility/sort.pipe';
 
 @Component({
   selector: 'app-purchase-request-lineitem-review',
@@ -14,33 +15,45 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class PurchaseRequestLineitemReviewComponent implements OnInit {
 
-  	title: string = "Purchase Request Review";
-  	purchaserequest: PurchaseRequest;
-    reject: boolean = false;
-    delivery: boolean = false;
+  title: string = "Purchase Request Review";
+  purchaserequest: PurchaseRequest;
+  reject: boolean = false;
+  delivery: boolean = false;
 
-approve(): void {
-  this.purchaserequest.RejectionReason="N/A";
-  this.purchaserequest.Status="Approved";
-  this.purchaserequestsrv.change(this.purchaserequest)
-    .subscribe(resp => {
-        console.log(resp);
-        this.router.navigateByUrl('/purchaserequests/review');
-    });
-}
+  sortProperty: string = "Id";
+  sortOrder: string = "asc";
 
-rejectstart(): void {
-  this.reject = true;
-}
+  sort(sortBy: string): void {
+    if(sortBy === this.sortProperty)
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    else {
+      this.sortProperty = sortBy;
+      this.sortOrder = 'asc';
+    }
+  }
 
-rejectcomplete(): void {
-  this.purchaserequest.Status="Rejected";
+  approve(): void {
+    this.purchaserequest.RejectionReason="N/A";
+    this.purchaserequest.Status="Approved";
     this.purchaserequestsrv.change(this.purchaserequest)
     .subscribe(resp => {
-        console.log(resp);
-        this.router.navigateByUrl('/purchaserequests/review');
-         });
-}
+      console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/review');
+    });
+  }
+
+  rejectstart(): void {
+    this.reject = true;
+  }
+
+  rejectcomplete(): void {
+    this.purchaserequest.Status="Rejected";
+    this.purchaserequestsrv.change(this.purchaserequest)
+    .subscribe(resp => {
+      console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/review');
+    });
+  }
 
   constructor(
   	private systemsrv: SystemService,
@@ -55,16 +68,18 @@ rejectcomplete(): void {
     }
     console.log("Logged-in user is: ",this.systemsrv.loggedInUser);
 
-  	let id = this.route.snapshot.params.id;
-  	console.log("id: ", id);
+    let id = this.route.snapshot.params.id;
+    console.log("id: ", id);
 
-  	this.purchaserequestsrv.get(id)
-  		.subscribe(resp => {
-  			this.purchaserequest=resp.Data;
-  			console.log(resp);
-        if(this.purchaserequest.DeliveryMode=="Delivery"){
-          this.delivery=true;
-        }
-  		});
+    this.purchaserequestsrv.get(id)
+    .subscribe(resp => {
+      this.purchaserequest=resp.Data;
+      console.log(resp);
+      if(this.purchaserequest.DeliveryMode=="Delivery"){
+        this.delivery=true;
+      }
+      for(let prli of this.purchaserequest.PurchaseRequestLineitems)
+        prli.ProductName = prli.Product.Name;
+    });
   }
 }
