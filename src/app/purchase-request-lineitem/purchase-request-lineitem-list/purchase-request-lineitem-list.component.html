@@ -4,12 +4,12 @@
 <a routerLink='/purchaserequestlineitems/create'>Add New</a>
 <table class="table table-sm">
     <tr>
-  	<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Quantity')">Quantity <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('ProductId')">ProductId <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
+  	<th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
+  	<th><a (click)="sort('Quantity')">Quantity  <i class="fas fa-sort"></i></a></th>
+  	<th><a (click)="sort('ProductId')">ProductId  <i class="fas fa-sort"></i></a></th>
   	<th>Product</th>
-  	<th><a (click)="sort('PurchaseRequestId')">Purchase Request Id <img src='/assets/sort.png'></a></th>
+  	<th><a (click)="sort('PurchaseRequestId')">Purchase Request Id  <i class="fas fa-sort"></i></a></th>
     </tr>
     <tr *ngFor="let prli of purchaserequestlineitems | sort:sortProperty:sortOrder">
       <td>{{prli.Id}}</td>

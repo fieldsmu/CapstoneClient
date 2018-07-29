@@ -2,11 +2,11 @@
 <div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true && sortProperty && sortOrder">
 <table class="table table-sm">
 	<tr>
-		<th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
+		<th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('Justification')">Justification  <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('DeliveryMode')">Delivery Mode  <i class="fas fa-sort"></i></a></th>
 		<th>Status</th>
-		<th><a (click)="sort('Total')">Total <img src='/assets/sort.png'></a></th>
+		<th><a (click)="sort('Total')">Total  <i class="fas fa-sort"></i></a></th>
 		<th>User</th>
 		<th>Actions</th>
 	</tr>

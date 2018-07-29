@@ -2,19 +2,19 @@
 <div *ngIf="systemsrv.loggedInUser && sortOrder && sortProperty && products">
 <h3>{{ title }}</h3>
 <span style="float:left; width:30%;"><a routerLink='/products/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New Product</a></span>
-<span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
+<span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search"></span>
 <br />
 <br />
 <table class="table table-sm">
 	<tr>
-		<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('PartNumber')">Part Number <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('Name')">Name  <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('Price')">Price  <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('Unit')">Unit  <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('PhotoPath')">Photo Path  <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('Active')">Active  <img src='/assets/sort.png'></a></th>
-		<th><a (click)="sort('VendorName')">Vendor  <img src='/assets/sort.png'></a></th>
+		<th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('PartNumber')">Part Number  <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('Name')">Name   <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('Price')">Price   <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('Unit')">Unit   <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('PhotoPath')">Photo Path   <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('Active')">Active   <i class="fas fa-sort"></i></a></th>
+		<th><a (click)="sort('VendorName')">Vendor   <i class="fas fa-sort"></i></a></th>
 		<th>Actions</th>
 	</tr>
 	<tr *ngFor="let p of products | searchProduct:searchCriteria | sort:sortProperty:sortOrder">

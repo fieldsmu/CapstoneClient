@@ -2,22 +2,22 @@
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && vendors">
   <h3>{{title}}</h3>
   <span style="float:left; width:30%;"><a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a></span>
-  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
+  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search"></span>
 <br />
 <br />
   <table class="table table-sm">
     <tr>
-     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Code')">Code <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Name')">Name <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Address')">Address <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('City')">City <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('State')">State <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Zip')">Zip <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Phone')">Phone <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Email')">Email <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('IsPreApproved')">Preapproved <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Active')">Active <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Code')">Code  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Name')">Name  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Address')">Address  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('City')">City  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('State')">State  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Zip')">Zip  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Phone')">Phone  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Email')">Email  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('IsPreApproved')">Preapproved  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Active')">Active  <i class="fas fa-sort"></i></a></th>
      <th>Actions</th>
    </tr>
    <tr *ngFor="let v of vendors | searchVendor:searchCriteria | sort:sortProperty:sortOrder">

@@ -7,15 +7,15 @@
   <br />
   <table class="table table-sm">
     <tr>
-     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Username')">Username <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Id')">Id <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Username')">Username <i class="fas fa-sort"></i></a></th>
      <th>Password</th>
-     <th><a (click)="sort('Firstname')">Name <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Phone')">Phone <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Email')">Email <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('IsReviewer')">Reviewer <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('IsAdmin')">Admin <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Active')">Active <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Firstname')">Name <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Phone')">Phone <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Email')">Email <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('IsReviewer')">Reviewer <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('IsAdmin')">Admin <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Active')">Active <i class="fas fa-sort"></i></a></th>
      <th>Actions</th>
    </tr>
    <tr *ngFor="let u of users | searchUser:searchCriteria | sort:sortProperty:sortOrder">

@@ -7,13 +7,13 @@
   <br />
   <table class="table table-sm">
     <tr>
-     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Description')">Description <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Justification')">Justification <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('RejectionReason')">Rejection Reason <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('DeliveryMode')">Delivery Mode <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Status')">Status <img src='/assets/sort.png'></a></th>
-     <th><a (click)="sort('Total')">Subtotal <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Justification')">Justification  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('RejectionReason')">Rejection Reason  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('DeliveryMode')">Delivery Mode  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Status')">Status  <i class="fas fa-sort"></i></a></th>
+     <th><a (click)="sort('Total')">Subtotal  <i class="fas fa-sort"></i></a></th>
      <th>Actions</th>
    </tr>
    <tr *ngFor="let pr of filteredPurchaseRequests | searchPurchaseRequest:searchCriteria | sort:sortProperty:sortOrder">
