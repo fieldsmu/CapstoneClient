@@ -13,15 +13,19 @@ export class SortPipe implements PipeTransform {
       let x=a[property];
       let y=b[property];
 
-      if(typeof a[property] != "string") {
+      if(typeof a[property] == "number") { } 
+        else if (a[property] != "string") {
         a[property]=a[property].toString().toUpperCase();
-      } else {
+      }
+        else {
         a[property]=a[property].toUpperCase();
       }
 
-      if(typeof b[property] != "string") {
+      if(typeof b[property] == "number") {}
+        else if (typeof b[property] != "string") {
         b[property]=b[property].toString().toUpperCase();
-      } else {
+      }
+        else {
         b[property]=b[property].toUpperCase();
       }
 
@@ -38,7 +42,7 @@ export class SortPipe implements PipeTransform {
         return z;
        }
        else { 
-         let z = +(a[property] > b[property])
+        let z = +(a[property] > b[property])
         a[property]=x;
         b[property]=y;
         return z;
