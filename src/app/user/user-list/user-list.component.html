@@ -1,40 +1,39 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && users">
-<h3>{{ title }}</h3>
-<span style="float:left; width:30%;"><a *ngIf="systemsrv.loggedInUser.IsAdmin==true;" routerLink='/users/create'>Add New</a></span>
-<span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
-<br />
-<br />
-<table class="table table-sm">
+  <h3>{{ title }}</h3>
+  <span style="float:left; width:30%;"><a *ngIf="systemsrv.loggedInUser.IsAdmin==true;" routerLink='/users/create'>Add New</a></span>
+  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="text" [(ngModel)]="searchCriteria" placeholder="Search(Case Sensitive)"></span>
+  <br />
+  <br />
+  <table class="table table-sm">
     <tr>
-  	<th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Username')">Username <img src='/assets/sort.png'></a></th>
-  	<th>Password</th>
-  	<th><a (click)="sort('Firstname')">Name <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Phone')">Phone <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('Email')">Email <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('IsReviewer')">Reviewer <img src='/assets/sort.png'></a></th>
-  	<th><a (click)="sort('IsAdmin')">Admin <img src='/assets/sort.png'></a></th>
-    <th><a (click)="sort('Active')">Active <img src='/assets/sort.png'></a></th>
-    <th>Actions</th>
-    </tr>
-    <tr *ngFor="let u of users | searchUser:searchCriteria | sort:sortProperty:sortOrder">
-      <td>{{u.Id}}</td>
-      <td>{{u.Username}}</td>
-      <td>{{u.Password}}</td>
-      <td>{{u.Firstname}} {{u.Lastname}}</td>
-      <td>{{u.Phone}}</td>
-      <td>{{u.Email}}</td>
-      <td>{{(u.IsReviewer | bool)}}</td>
-      <td>{{(u.IsAdmin | bool)}}</td>
-      <td>{{(u.Active | bool)}}</td>
-      <td>
-        <a routerLink='/users/detail/{{ u.Id }}'>Detail</a>
-        <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> | 
+     <th><a (click)="sort('Id')">Id <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Username')">Username <img src='/assets/sort.png'></a></th>
+     <th>Password</th>
+     <th><a (click)="sort('Firstname')">Name <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Phone')">Phone <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Email')">Email <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('IsReviewer')">Reviewer <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('IsAdmin')">Admin <img src='/assets/sort.png'></a></th>
+     <th><a (click)="sort('Active')">Active <img src='/assets/sort.png'></a></th>
+     <th>Actions</th>
+   </tr>
+   <tr *ngFor="let u of users | searchUser:searchCriteria | sort:sortProperty:sortOrder">
+    <td>{{u.Id}}</td>
+    <td>{{u.Username}}</td>
+    <td>{{u.Password}}</td>
+    <td>{{u.Firstname}} {{u.Lastname}}</td>
+    <td>{{u.Phone}}</td>
+    <td>{{u.Email}}</td>
+    <td>{{(u.IsReviewer | bool)}}</td>
+    <td>{{(u.IsAdmin | bool)}}</td>
+    <td>{{(u.Active | bool)}}</td>
+    <td>
+      <a routerLink='/users/detail/{{ u.Id }}'>Detail</a>
+      <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> | 
         <a  routerLink='/users/edit/{{u.Id}}'> Edit</a>
       </span>
-     </td>
-    </tr>
+    </td>
+  </tr>
 </table>
-
 </div>

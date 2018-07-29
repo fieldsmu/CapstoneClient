@@ -13,17 +13,18 @@ export class SearchUserPipe implements PipeTransform {
       if(
       	user.Id.toString().includes(searchFor) ||
       	user.Username.includes(searchFor) ||
-    		user.Firstname.includes(searchFor) ||
-    		user.Lastname.includes(searchFor) ||
-    		user.Phone.includes(searchFor) ||
-    		user.Firstname.includes(searchFor) ||
-    		user.Email.includes(searchFor)
-    	  //"|True|true|T|t|Yes|yes|Y|y|".includes("|"+searchFor+"|") ||
-        //"|False|false|F|f|No|no|N|n|".includes("|"+searchFor+"|")
+        user.Firstname.includes(searchFor) ||
+        user.Lastname.includes(searchFor) ||
+        user.Phone.includes(searchFor) ||
+        user.Firstname.includes(searchFor) ||
+        user.Email.includes(searchFor)
+        // || user.IsReviewer ? 
+        //   "|True|true|T|t|Yes|yes|Y|y|".includes("|"+searchFor+"|") : 
+        //   "|False|false|F|f|No|no|N|n|".includes("|"+searchFor+"|")
         ) {
         srchUsers.push(user);
-      }
     }
-    return srchUsers;
   }
+  return srchUsers;
+}
 }

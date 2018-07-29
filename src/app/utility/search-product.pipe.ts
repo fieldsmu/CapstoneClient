@@ -9,11 +9,13 @@ export class SearchProductPipe implements PipeTransform {
   transform(products: Product[], searchFor: string): any[] {
     let srchProducts: Product[] = [];
     for(let product of products) {
-      if(product.Vendor.Name.includes(searchFor)
-          || product.Name.includes(searchFor)
-          || product.PartNumber.includes(searchFor)
-          || product.Name.includes(searchFor)
-          || product.Unit.includes(searchFor)
+      if(
+        product.Vendor.Name.includes(searchFor) || 
+        product.Name.includes(searchFor) ||
+        product.PartNumber.includes(searchFor) ||
+        product.Name.includes(searchFor) ||
+        product.Unit.includes(searchFor) ||
+        product.Active.toString().includes(searchFor)
         ) {
         srchProducts.push(product);
       }
