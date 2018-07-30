@@ -18,7 +18,7 @@ import { SearchPurchaseRequestReviewPipe } from '../../utility/search-purchase-r
 
 export class PurchaseRequestReviewComponent implements OnInit {
 
-	title:string="Purchase Requests Review";
+	title:string="Purchase Request Reviews";
 
 	purchaserequests: PurchaseRequest[];
 	filteredPurchaseRequests: PurchaseRequest[] = [];

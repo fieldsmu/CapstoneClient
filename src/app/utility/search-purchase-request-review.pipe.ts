@@ -12,11 +12,9 @@ export class SearchPurchaseRequestReviewPipe implements PipeTransform {
       if(
         purchaseRequest.Description.toUpperCase().includes(searchFor.toUpperCase()) || 
         purchaseRequest.Justification.toUpperCase().includes(searchFor.toUpperCase()) ||
-        purchaseRequest.RejectionReason.toUpperCase().includes(searchFor.toUpperCase()) ||
         purchaseRequest.DeliveryMode.toUpperCase().includes(searchFor.toUpperCase()) ||
-        purchaseRequest.Status.toUpperCase().includes(searchFor.toUpperCase()) ||
-        purchaseRequest.Total.toString().includes(searchFor)
-        //||purchaseRequest.Active.toString().includes(searchFor)
+        purchaseRequest.Total.toString().includes(searchFor) ||
+        purchaseRequest.PRUser.includes(searchFor)
         ) {
         srchPurchaseRequests.push(purchaseRequest);
       }
