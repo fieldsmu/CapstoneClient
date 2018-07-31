@@ -16,12 +16,10 @@ export class SearchProductPipe implements PipeTransform {
         product.Name.toUpperCase().includes(searchFor.toUpperCase()) ||
         product.Unit.toUpperCase().includes(searchFor.toUpperCase()) ||
         product.Price.toString().includes(searchFor)
-        //||product.Active.toString().includes(searchFor)
         ) {
         srchProducts.push(product);
       }
     }
     return srchProducts;
   }
-
 }

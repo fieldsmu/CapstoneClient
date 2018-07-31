@@ -34,12 +34,12 @@
 	</table>
 </div>
 <div>
-	<button (click)="approve();" class="btn btn-success" style="margin:10px 10px 10px 0px;">Approve</button>
+	<button (click)="approve();" class="btn btn-success" style="margin:10px 10px 10px 10px;">Approve</button>
 	<button (click)="rejectstart();" class="btn btn-danger" style="margin:0px 5px 0px 0px;">Reject</button>
 
 	<span *ngIf="reject && purchaserequest">
 		<input [(ngModel)]="purchaserequest.RejectionReason" name="RejectionReason" type="text" class="form-control" id="RejectionReason" placeholder = "Enter reason for rejection here">
-		<button (click)="rejectcomplete();" class="btn btn-danger">Complete</button>
+		<button (click)="rejectcomplete();" class="btn btn-danger" style="margin:10px 10px 10px 10px;">Complete</button>
 	</span>
 </div>
 

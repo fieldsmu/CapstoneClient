@@ -10,7 +10,7 @@ export class SortPipe implements PipeTransform {
 
     let sorted = objArr.sort((a,b): number => {
    
-      //x & y are placeholders for a & b so they can later be restored after sorting case insensitive
+      //x & y are placeholders for a & b so they can later be restored after being changes to uppercase for sorting case insensitive
       let x=a[property];
       let y=b[property];
 
@@ -56,5 +56,3 @@ export class SortPipe implements PipeTransform {
     return sorted;
   }
 }
-
-
