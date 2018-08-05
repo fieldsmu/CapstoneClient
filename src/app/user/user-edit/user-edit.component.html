@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
-<div style="width:60%; padding: 10px;" *ngIf="user && systemsrv.loggedInUser.IsAdmin==true;">
+<div style="width:60%; padding: 10px;" *ngIf="user && (systemsrv.loggedInUser.IsAdmin===true || systemsrv.loggedInUser.Id === user.Id);">
 	<label class="input-group-text" for="Username">Username</label>
 		<input [(ngModel)]="user.Username" name="Username" type="text" class="form-control" id="Username">
 

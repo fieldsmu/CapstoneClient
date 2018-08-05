@@ -25,7 +25,7 @@
       <td>{{prli.Quantity}}</td>
       <td>{{prli.Product.Price | currency}}</td>
       <td>{{prli.Quantity*prli.Product.Price | currency}}</td>
-      <td><a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
+      <td><a class="badge badge-primary" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="badge badge-primary" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>
 

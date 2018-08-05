@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && purchaserequestlineitems && sortProperty && sortOrder">
-<h3>{{ title }}</h3>
+<h3 style="display: inline-block;">{{ title }}</h3>
 <a class="btn btn-primary" routerLink='/purchaserequestlineitems/create'>Add New</a>
 <div id="container">
 <table class="table table-hover">
@@ -17,7 +17,7 @@
       <td>{{prli.ProductId}}</td>
       <td>{{prli.Product.Name}}</td>
       <td>{{prli.PurchaseRequestId}}</td>
-      <td><a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
+      <td><a class="badge badge-primary" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="badge badge-primary" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>
 </div>

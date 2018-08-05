@@ -8,7 +8,7 @@ a:hover	{
     top: 0;
     left: 0;
     z-index: 500;
-    background: white;
+    background: #DDDDDD;
 }
 #container {
     margin-top: 150px;

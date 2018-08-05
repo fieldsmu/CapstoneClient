@@ -16,7 +16,7 @@ import { SearchPurchaseRequestPipe } from '../../utility/search-purchase-request
 })
 export class PurchaseRequestListComponent implements OnInit {
 
-  title: string = "Purchase Request List";
+  title: string = "Your Purchase Requests";
 
   purchaserequests: PurchaseRequest[];
   filteredPurchaseRequests: PurchaseRequest[] = [];

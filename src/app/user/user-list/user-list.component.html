@@ -1,8 +1,8 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && users">
   <div id="container2">
-    <h3>{{ title }}</h3>
-    <span style="float:left; width:30%;">
+    <h3 style="display: inline-block;">{{ title }}</h3>
+    <span style="margin: 0 10px">
       <a class="btn btn-primary" *ngIf="systemsrv.loggedInUser.IsAdmin==true;" routerLink='/users/create'>Add New</a>
     </span>
     <input style="display: inline-block; width: 50%" class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search">
@@ -41,9 +41,9 @@
         <td>{{u.Phone}}</td>
         <td>{{u.Email}}</td>
         <td>
-          <a class="btn btn-primary btn-sm" routerLink='/users/detail/{{ u.Id }}'>Detail</a>
-          <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> |
-            <a class="btn btn-primary btn-sm" routerLink='/users/edit/{{u.Id}}'> Edit</a>
+          <a class="badge badge-primary" routerLink='/users/detail/{{ u.Id }}'>Detail</a>
+          <span *ngIf="systemsrv.loggedInUser.IsAdmin===true || systemsrv.loggedInUser.Id === u.Id;"> |
+            <a class="badge badge-primary" routerLink='/users/edit/{{u.Id}}'> Edit</a>
           </span>
         </td>
       </tr>

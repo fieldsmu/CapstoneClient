@@ -34,6 +34,7 @@ export class PurchaseRequestLinesComponent implements OnInit {
   review(): void {
     if (this.purchaserequest.Total < 50){
       this.purchaserequest.Status="Approved";
+      this.purchaserequest.RejectionReason="N/A";
       this.purchaserequestsvc.change(this.purchaserequest)
       .subscribe(resp => {
         console.log(resp);
