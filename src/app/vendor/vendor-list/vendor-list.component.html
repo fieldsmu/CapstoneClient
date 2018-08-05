@@ -1,43 +1,61 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && sortProperty && sortOrder && vendors">
-  <h3>{{title}}</h3>
-  <span style="float:left; width:30%;"><a routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a></span>
-  <span style="float:right; padding:5px 2px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span> 
-  <span style="float:right; width:40%; padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
-<br />
-<br />
-  <table class="table table-sm">
-    <tr>
-     <th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Code')">Code  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Name')">Name  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Address')">Address  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('City')">City  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('State')">State  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Zip')">Zip  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Phone')">Phone  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Email')">Email  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('IsPreApproved')">Preapproved  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Active')">Active  <i class="fas fa-sort"></i></a></th>
-     <th>Actions</th>
-   </tr>
-   <tr *ngFor="let v of vendors | searchVendor:searchCriteria | sort:sortProperty:sortOrder">
-    <td>{{v.Id}}</td>
-    <td>{{v.Code}}</td>
-    <td>{{v.Name}}</td>
-    <td>{{v.Address}}</td>
-    <td>{{v.City}}</td>
-    <td>{{v.State}}</td>
-    <td>{{v.Zip}}</td>
-    <td>{{v.Phone}}</td>
-    <td>{{v.Email}}</td>
-    <td>{{v.IsPreApproved | bool}}</td>
-    <td>{{v.Active | bool}}</td>
-    <td><a routerLink='/vendors/detail/{{ v.Id }}'>Detail</a>
-      <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> | <a routerLink='/vendors/edit/{{v.Id}}'>Edit</a></span>
-       |<a routerLink='/vendors/purchaseorder/{{v.Id}}' style="margin:10px 5px 10px 5px">Create PO</a>
-   </td>
- </tr>
-</table>
+  <div id="container2">
+    <h3>{{title}}</h3>
+    <span style="float:left; width:30%;">
+      <a class="btn btn-primary" routerLink='/vendors/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New</a>
+    </span>
+    <input style="display: inline-block; width: 50%" class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search">
+    <i style="display: inline-block;" class="fas fa-search"></i>
+  </div>
+  <br />
+  <br />
+  <div id="container">
+    <table class="table table-hover">
+      <tr>
+        <th>
+          <a (click)="sort('Name')">Name
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('Address')">Address
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('City')">City
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('State')">State
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('Email')">Email
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let v of vendors | searchVendor:searchCriteria | sort:sortProperty:sortOrder">
+        <td>{{v.Name}}</td>
+        <td>{{v.Address}}</td>
+        <td>{{v.City}}</td>
+        <td>{{v.State}}</td>
+        <td>{{v.Email}}</td>
+        <td>
+          <a class="btn btn-primary btn-sm" routerLink='/vendors/detail/{{ v.Id }}'>Detail</a>
+          <span *ngIf="systemsrv.loggedInUser.IsAdmin==true;"> |
+            <a class="btn btn-primary btn-sm" routerLink='/vendors/edit/{{v.Id}}'>Edit</a>
+          </span>
+          |
+          <a class="btn btn-primary btn-sm" routerLink='/vendors/purchaseorder/{{v.Id}}' style="margin:10px 5px 10px 5px">Create PO</a>
+        </td>
+      </tr>
+    </table>
+  </div>
 
 </div>

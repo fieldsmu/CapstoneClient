@@ -1,10 +1,10 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && purchaserequestlineitems && sortProperty && sortOrder">
 <h3>{{ title }}</h3>
-<a routerLink='/purchaserequestlineitems/create'>Add New</a>
-<table class="table table-sm">
+<a class="btn btn-primary" routerLink='/purchaserequestlineitems/create'>Add New</a>
+<div id="container">
+<table class="table table-hover">
     <tr>
-  	<th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
   	<th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
   	<th><a (click)="sort('Quantity')">Quantity  <i class="fas fa-sort"></i></a></th>
   	<th><a (click)="sort('ProductId')">ProductId  <i class="fas fa-sort"></i></a></th>
@@ -12,14 +12,14 @@
   	<th><a (click)="sort('PurchaseRequestId')">Purchase Request Id  <i class="fas fa-sort"></i></a></th>
     </tr>
     <tr *ngFor="let prli of purchaserequestlineitems | sort:sortProperty:sortOrder">
-      <td>{{prli.Id}}</td>
       <td>{{prli.Description}}</td>
       <td>{{prli.Quantity}}</td>
       <td>{{prli.ProductId}}</td>
       <td>{{prli.Product.Name}}</td>
       <td>{{prli.PurchaseRequestId}}</td>
-      <td><a routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
+      <td><a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>
+</div>
 
 </div>

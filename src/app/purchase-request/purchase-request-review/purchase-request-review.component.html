@@ -1,28 +1,54 @@
 <app-menu></app-menu>
-<h3 >{{title}}</h3>
+<h3>{{title}}</h3>
 <div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==true && sortProperty && sortOrder">
-<span style="float:right; padding:5px 10px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span>
-  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
-<br />
-<br />
-<table class="table table-sm">
-	<tr>
-		<th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Justification')">Justification  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('DeliveryMode')">Delivery Mode  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Total')">Total  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('PRUser')">User  <i class="fas fa-sort"></i></a></th>
-		<th>Actions</th>
-	</tr>
-	<tr *ngFor="let fpr of filteredPurchaseRequests | searchPurchaseRequestReview:searchCriteria | sort:sortProperty:sortOrder">
-		<td>{{fpr.Description}}</td>
-		<td>{{fpr.Justification}}</td>
-		<td>{{fpr.DeliveryMode}}</td>
-		<td>{{fpr.Total | currency}}</td>
-		<td>{{fpr.PRUser}}</td>
-		<td><a routerLink="/purchaserequestlineitems/review/{{fpr.Id}}">Review</a></td>
-	</tr>
-</table>
+	<div id="container2">
+		<input style="display: inline-block; width: 50%; margin: 10px auto;" class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search">
+		<i style="display: inline-block;" class="fas fa-search"></i>
+	</div>
+	<br />
+	<br />
+	<div id="container">
+		<table class="table table-hover">
+			<tr>
+				<th>
+					<a (click)="sort('Description')">Description
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('Justification')">Justification
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('DeliveryMode')">Delivery Mode
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('Total')">Total
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('PRUser')">User
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>Actions</th>
+			</tr>
+			<tr *ngFor="let fpr of filteredPurchaseRequests | searchPurchaseRequestReview:searchCriteria | sort:sortProperty:sortOrder">
+				<td>{{fpr.Description}}</td>
+				<td>{{fpr.Justification}}</td>
+				<td>{{fpr.DeliveryMode}}</td>
+				<td>{{fpr.Total | currency}}</td>
+				<td>{{fpr.PRUser}}</td>
+				<td>
+					<a class="btn btn-primary btn-sm" routerLink="/purchaserequestlineitems/review/{{fpr.Id}}">Review</a>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
 <div *ngIf="purchaserequests && filteredPurchaseRequests && systemsrv.loggedInUser.IsReviewer==false" style="color:red; margin:10px;">
 	You do not have reviewer rights. Please contact network admin for assistance.

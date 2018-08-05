@@ -49,7 +49,7 @@ export class PurchaseRequestReviewComponent implements OnInit {
 		.subscribe(resp => {
 			this.purchaserequests = resp.Data;
 			for (let pr of this.purchaserequests) {
-				if (pr.UserId != this.systemsrv.loggedInUser.Id && pr.Status == "Review") {
+				if ((pr.UserId != this.systemsrv.loggedInUser.Id || this.systemsrv.loggedInUser.Username === "sa") && pr.Status == "Review") {
 					this.filteredPurchaseRequests.push(pr);
 				}
 			}

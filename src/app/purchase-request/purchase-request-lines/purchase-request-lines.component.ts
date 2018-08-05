@@ -32,6 +32,15 @@ export class PurchaseRequestLinesComponent implements OnInit {
   }
 
   review(): void {
+    if (this.purchaserequest.Total < 50){
+      this.purchaserequest.Status="Approved";
+      this.purchaserequestsvc.change(this.purchaserequest)
+      .subscribe(resp => {
+        console.log(resp);
+      this.router.navigateByUrl('/purchaserequests/list');
+      });
+      return;
+    }
     this.purchaserequest.Status="Review";
     this.purchaserequestsvc.change(this.purchaserequest)
       .subscribe(resp => {

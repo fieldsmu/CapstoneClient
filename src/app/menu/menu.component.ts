@@ -7,17 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-	menudata = [
-	{ href:"/home", display: "Home"},
-	{ href:"/about", display: "About"},
-	{ href:"/users/list", display: "User"},
-	{ href:"/vendors/list", display: "Vendor"},
-	{ href:"/products/list", display: "Product"},
-	{ href: "/purchaserequests/list", display: "Purchase Request"},
-	{ href: "/purchaserequests/review", display: "Review" },
-	{ href: "/users/login", display: "Login/Logout"}
-	];
-	
+  tabs = [
+    { name: 'Home', link: 'home', fontawesome: 'fas fa-home'},
+    { name: 'Users', link: 'users/list', fontawesome: 'fas fa-users'},
+    { name: 'Purchase Requests', link: 'purchaserequests/list', fontawesome: 'fas fa-money-check'},
+    { name: 'Review', link: 'purchaserequests/review', fontawesome: 'fas fa-search'},
+    { name: 'Vendors', link: 'vendors/list', fontawesome: 'fas fa-building'},
+    { name: 'Products', link: 'products/list', fontawesome: 'fab fa-product-hunt'},
+  ];
   constructor() { }
 
   ngOnInit() { }

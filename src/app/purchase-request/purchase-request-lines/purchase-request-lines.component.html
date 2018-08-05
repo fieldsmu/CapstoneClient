@@ -1,8 +1,8 @@
 <app-menu></app-menu>
 <div *ngIf="purchaserequest && sortProperty && sortOrder">
 <h3>{{ title }} {{purchaserequest.Id}}</h3>
-<a routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New Item</a>
-<table class="table table-sm">
+<a class="btn btn-primary" routerLink='/purchaserequestlineitems/create/{{purchaserequest.Id}}'>Add New Item</a>
+<table class="table table-hover">
 <tr>
   <th style="text-align:right">User: </th><td>{{systemsrv.loggedInUser.Username}}</td>
   <th style="text-align:right">Description: </th><td>{{purchaserequest.Description}}</td>
@@ -12,7 +12,7 @@
 </tr>
 </table>
 
-<table class="table table-sm">
+<table class="table table-hover">
     <tr>
   	<th><a (click)="sort('ProductName')">Product  <i class="fas fa-sort"></i></a></th>
     <th><a (click)="sort('Quantity')">Quantity  <i class="fas fa-sort"></i></a></th>
@@ -25,7 +25,7 @@
       <td>{{prli.Quantity}}</td>
       <td>{{prli.Product.Price | currency}}</td>
       <td>{{prli.Quantity*prli.Product.Price | currency}}</td>
-      <td><a routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
+      <td><a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/detail/{{ prli.Id }}'>Detail</a> | <a class="btn btn-primary btn-sm" routerLink='/purchaserequestlineitems/edit/{{prli.Id}}'>Edit</a></td>
     </tr>
 </table>
 

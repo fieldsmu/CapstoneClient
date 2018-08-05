@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <h3>{{title}}</h3>
 <div *ngIf="systemsrv.loggedInUser && vendor">
-<table *ngIf="vendor" class="table table-sm">
+<table *ngIf="vendor" class="table table-hover">
 	<tr><th>Id</th><td>{{ vendor.Id }}</td></tr>
   	<tr><th>Code</th><td>{{ vendor.Code }}</td></tr>
   	<tr><th>Name</th><td>{{ vendor.Name }}</td></tr>

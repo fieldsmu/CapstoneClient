@@ -1,32 +1,63 @@
 <app-menu></app-menu>
 <div *ngIf="this.systemsrv.loggedInUser && filteredPurchaseRequests && purchaserequests && sortProperty && sortOrder">
-  <h3 >{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
-  <span style="float:left; width:30%;"><a routerLink='/purchaserequests/create'>Add New</a></span>
-  <span style="float:right; padding:5px 10px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span>
-  <span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
+  <div id="container2">
+    <h3>{{ title }} for {{this.systemsrv.loggedInUser.Username}}</h3>
+    <span style="float:left; width:30%;">
+      <a class="btn btn-primary" routerLink='/purchaserequests/create'>Add New</a>
+    </span>
+    <input style="display: inline-block; width: 50%" class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search">
+    <i style="display: inline-block;" class="fas fa-search"></i>
+  </div>
   <br />
   <br />
-  <table class="table table-sm">
-    <tr>
-     <th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Description')">Description  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Justification')">Justification  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('RejectionReason')">Rejection Reason  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('DeliveryMode')">Delivery Mode  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Status')">Status  <i class="fas fa-sort"></i></a></th>
-     <th><a (click)="sort('Total')">Subtotal  <i class="fas fa-sort"></i></a></th>
-     <th>Actions</th>
-   </tr>
-   <tr *ngFor="let pr of filteredPurchaseRequests | searchPurchaseRequest:searchCriteria | sort:sortProperty:sortOrder">
-    <td>{{pr.Id}}</td>
-    <td>{{pr.Description}}</td>
-    <td>{{pr.Justification}}</td>
-    <td>{{pr.RejectionReason}}</td>
-    <td>{{pr.DeliveryMode}}</td>
-    <td>{{pr.Status}}</td>
-    <td>{{pr.Total | currency}}</td>
-    <td><a routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> | <a routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> | 
-      <a routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a></td>
-    </tr>
-  </table>
+  <div id="container">
+    <table class="table table-hover">
+      <tr>
+        <th>
+          <a (click)="sort('Description')">Description
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('Justification')">Justification
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('RejectionReason')">Rejection Reason
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('DeliveryMode')">Delivery Mode
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('Status')">Status
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>
+          <a (click)="sort('Total')">Subtotal
+            <i class="fas fa-sort"></i>
+          </a>
+        </th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let pr of filteredPurchaseRequests | searchPurchaseRequest:searchCriteria | sort:sortProperty:sortOrder">
+        <td>{{pr.Description}}</td>
+        <td>{{pr.Justification}}</td>
+        <td>{{pr.RejectionReason}}</td>
+        <td>{{pr.DeliveryMode}}</td>
+        <td>{{pr.Status}}</td>
+        <td>{{pr.Total | currency}}</td>
+        <td>
+          <a class="btn btn-primary btn-sm" routerLink='/purchaserequests/detail/{{ pr.Id }}'>Detail</a> |
+          <a class="btn btn-primary btn-sm" routerLink='/purchaserequests/edit/{{pr.Id}}'>Edit</a> |
+          <a class="btn btn-primary btn-sm" routerLink='/purchaserequests/lineitems/{{pr.Id}}'> Lines</a>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

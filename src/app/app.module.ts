@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 
 import { MenuComponent } from './menu/menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { FooterBarComponent } from './footer/footer-bar/footer-bar.component';
 
 import { UserLoginComponent } from './user/user-login/user-login.component';
 
@@ -57,6 +58,7 @@ import { SearchPurchaseRequestReviewPipe } from './utility/search-purchase-reque
     AboutComponent,
     MenuComponent,
     MenuItemComponent,
+    FooterBarComponent,
     UserDetailComponent,
     UserEditComponent,
     UserLoginComponent,

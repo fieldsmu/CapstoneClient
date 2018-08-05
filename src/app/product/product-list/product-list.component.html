@@ -1,38 +1,68 @@
 <app-menu></app-menu>
 <div *ngIf="systemsrv.loggedInUser && sortOrder && sortProperty && products">
-<h3>{{ title }}</h3>
-<span style="float:left; width:30%;"><a routerLink='/products/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New Product</a></span>
-<span style="float:right; padding:5px 10px 2px 2px; align-items: center;"><i class="fas fa-search"></i></span>
-<span style="float:right; width:40%;  padding:0px 5px 0px 0px;"><input class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search"></span>
-<br />
-<br />
-<table class="table table-sm">
-	<tr>
-		<th><a (click)="sort('Id')">Id  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('PartNumber')">Part Number  <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Name')">Name   <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Price')">Price   <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Unit')">Unit   <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('PhotoPath')">Photo Path   <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('Active')">Active   <i class="fas fa-sort"></i></a></th>
-		<th><a (click)="sort('VendorName')">Vendor   <i class="fas fa-sort"></i></a></th>
-		<th>Actions</th>
-	</tr>
-	<tr *ngFor="let p of products | searchProduct:searchCriteria | sort:sortProperty:sortOrder">
-		<td>{{p.Id}}</td>
-		<td>{{p.PartNumber}}</td>
-		<td>{{p.Name}}</td>
-		<td>{{p.Price | currency}}</td>
-		<td>{{p.Unit}}</td>
-		<td>{{p.PhotoPath}}</td>
-		<td>{{p.Active | bool}}</td>
-		<td>{{p.VendorName}}</td>
-		<td><a routerLink='/products/detail/{{p.Id}}'>Detail</a>
-			<span *ngIf="systemsrv.loggedInUser.IsAdmin==true;">
-		 	| <a routerLink='/products/edit/{{p.Id}}'>Edit</a>
-			</span>
-		</td>
-	</tr>
-</table>
+	<div id="container2">
+		<h3>{{ title }}</h3>
+		<span style="float:left; width:30%;">
+			<a class="btn btn-primary" routerLink='/products/create' *ngIf="systemsrv.loggedInUser.IsAdmin==true;">Add New Product</a>
+		</span>
+		<input style="display: inline-block; width: 50%" class="form-control" type="search" [(ngModel)]="searchCriteria" placeholder="Search">
+		<i style="display: inline-block;" class="fas fa-search"></i>
+	</div>
+	<br />
+	<br />
+	<div id="container">
+		<table class="table table-hover">
+			<tr>
+				<th>
+					<a (click)="sort('PartNumber')">Part Number
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('Name')">Name
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('Price')">Price
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('Unit')">Unit
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('PhotoPath')">Photo Path
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>
+					<a (click)="sort('VendorName')">Vendor
+						<i class="fas fa-sort"></i>
+					</a>
+				</th>
+				<th>Actions</th>
+			</tr>
+			<tr *ngFor="let p of products | searchProduct:searchCriteria | sort:sortProperty:sortOrder">
+				<td>{{p.PartNumber}}</td>
+				<td>{{p.Name}}</td>
+				<td>{{p.Price | currency}}</td>
+				<td>{{p.Unit}}</td>
+				<td>
+					<img height="120" src="{{p.PhotoPath}}">
+				</td>
+				<td>{{p.VendorName}}</td>
+				<td>
+					<a class="btn btn-primary btn-sm" routerLink='/products/detail/{{p.Id}}'>Detail</a>
+					<span *ngIf="systemsrv.loggedInUser.IsAdmin==true;">
+						|
+						<a class="btn btn-primary btn-sm" routerLink='/products/edit/{{p.Id}}'>Edit</a>
+					</span>
+				</td>
+			</tr>
+		</table>
+	</div>
 
 </div>
